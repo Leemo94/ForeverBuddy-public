@@ -1,0 +1,37 @@
+# Push an annotated tag (e.g. `git tag -a v0.5.1 -m "v0.5.1" && git push origin v0.5.1`) and this
+# packages the addon and uploads it to GitHub Releases, plus CurseForge / Wago / WoWInterface
+# for whichever of those secrets are set. Game versions come from `## Interface:` in the TOC.
+name: Package and release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      WOWI_API_TOKEN: ${{ secrets.WOWI_API_TOKEN }}
+      WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Clone project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run the offline test suite
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq luajit
+          sh tests/run.sh
+          python3 -m unittest discover -s tools
+
+      - name: Package and release
+        uses: BigWigsMods/packager@v2

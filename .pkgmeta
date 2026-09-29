@@ -1,0 +1,14 @@
+package-as: ForeverBuddy
+
+# Everything outside the addon itself stays out of the release zip.
+ignore:
+  - tests
+  - tools
+  - docs
+  - site
+  - .github
+  - .gitignore
+  - .pkgmeta
+  - "*.zip"
+
+enable-nolib-creation: no

@@ -1,0 +1,36 @@
+name: Send in recorded data
+description: Hand over your ForeverBuddy file so the next release knows what your characters saw
+title: "Data: "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Everything sent in is merged into the data the addon ships with.
+
+        **How to find your file**
+
+        1. Log out of the game. It writes the file then, not before.
+        2. Open `World of Warcraft\_classic_\WTF\Account\<your account>\SavedVariables\`
+        3. The file is `ForeverBuddy.lua`.
+
+        **Before you attach it**, zip it or rename it to `ForeverBuddy.txt`. GitHub will not
+        accept a `.lua` file on an issue.
+
+        **One thing to know:** the file names the characters you played on, because talent
+        choices are recorded per character. Nothing else about you is in it, and there is no
+        chat, no keystrokes and nothing from combat. If you would rather not have that public,
+        send it to Leemo on Discord instead.
+  - type: textarea
+    id: file
+    attributes:
+      label: Your file
+      description: Drag the zipped or renamed file into this box
+      placeholder: Drop the file here
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything worth saying
+      description: Quests whose giver we have wrong, a dungeon quest that is missing, anything you noticed

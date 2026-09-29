@@ -1,0 +1,23 @@
+name: Something is wrong
+description: A bug, a wrong quest giver, an ability at the wrong level
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, and what the addon did
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: ForeverBuddy version
+      description: The line under the heading on the welcome page, or /fb info
+      placeholder: "0.21.1"
+  - type: textarea
+    id: error
+    attributes:
+      label: Any Lua error
+      description: Untick "Hide Lua errors" in the settings first, then repeat what you did
+      render: text

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask on Discord
+    url: https://discord.com/
+    about: Find Leemo on Discord if you would rather not open an issue

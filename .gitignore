@@ -1,0 +1,10 @@
+tools/cache/
+__pycache__/
+.DS_Store
+
+# Recorded player data: it carries character names, and every contributor builds their own.
+tools/observed/
+# Working notes that name people; kept outside the repo.
+docs/CONTEXT.md
+docs/BETA-DAY.md
+docs/superpowers/
