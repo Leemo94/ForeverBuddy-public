@@ -1,8 +1,9 @@
 ## Interface: 11509, 16001
 ## Title: ForeverBuddy
-## Notes: Quality-of-life for World of Warcraft: Forever. Dungeon quests, class ability levels, zone levels on the map, city trainers, and the usual conveniences. /fb to open.
-## Version: 1.0.0
+## Notes: Quality-of-life for World of Warcraft: Forever. Where to level, class ability levels, crafting shopping lists, city trainers on the map, and the usual conveniences. /fb to open.
+## Version: 1.0.1
 ## Author: Leemo
+## X-Curse-Project-ID: 1717131
 ## X-License: GPL-3.0
 ## SavedVariables: ForeverBuddyDB
 
@@ -16,6 +17,7 @@ Data\Observed.lua
 Data\Loot.lua
 Data\Cities.lua
 Data\Abilities.lua
+Data\Crafting.lua
 Core.lua
 Comm\Version.lua
 UsedFor\QuestStatus.lua
@@ -34,6 +36,8 @@ Automation\AutoEquip.lua
 Nav\Arrow.lua
 Nav\MapLevels.lua
 Nav\CityPins.lua
+Craft\Plan.lua
+Craft\Panel.lua
 UI\Window.lua
 UI\Home.lua
 UI\Journal.lua
@@ -41,6 +45,7 @@ UI\Zones.lua
 UI\Abilities.lua
 UI\Settings.lua
 UI\Errors.lua
+UI\Minimap.lua
 Dungeons\Guide.lua
 Dungeons\Zones.lua
 Setup.lua

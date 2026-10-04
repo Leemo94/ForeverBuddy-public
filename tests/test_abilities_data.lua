@@ -5,7 +5,8 @@ local ns = Stub.LoadAddon({ "Data/Abilities.lua", "Core.lua" })
 
 T.run("every class has a ladder, and it says where it came from", function()
   T.eq(ns.AbilityInfo.classes, 9)
-  T.eq(ns.AbilityInfo.build, "1.60.1.69893")
+  -- Pinned so a rebuild on a new client build is a decision, not an accident.
+  T.eq(ns.AbilityInfo.build, "1.60.1.70178")
   local counted = 0
   for class, list in pairs(ns.Abilities) do
     T.truthy(#list > 80, class .. " has only " .. #list)  -- rogues are the shortest ladder

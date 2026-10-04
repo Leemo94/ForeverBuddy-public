@@ -100,6 +100,21 @@ local function PinTooltip(pin)
   return point.name
 end
 
+-- Blizzard's own pins, the quest ! and ? above all, are handed frame levels in the hundreds by
+-- the map's pin manager. Ours sit just above the map art and below every one of them, so a
+-- trainer dot never covers a quest giver and never takes the mouse-over off one.
+local PIN_LEVEL_ABOVE_MAP = 2
+
+-- The pins themselves, for the tests.
+function ns.CityPinFrames()
+  return pins
+end
+
+function ns.CityPinFrameLevel(canvas)
+  local base = canvas and canvas.GetFrameLevel and canvas:GetFrameLevel()
+  return (type(base) == "number" and base or 1) + PIN_LEVEL_ABOVE_MAP
+end
+
 local function BuildPin(parent, index)
   local pin = CreateFrame("Button", nil, parent)
   pin:SetSize(DOT_SIZE, DOT_SIZE)
@@ -348,6 +363,7 @@ function ns.UpdateCityPins()
   frame:Show()
 
   local width, height = canvas:GetWidth() or 0, canvas:GetHeight() or 0
+  local level = ns.CityPinFrameLevel(canvas)
   local shown = 0
   for _, point in ipairs(ns.CityPoints(city)) do
     shown = shown + 1
@@ -360,7 +376,8 @@ function ns.UpdateCityPins()
     if coords then pin.icon:SetTexCoord(unpack(coords)) else pin.icon:SetTexCoord(0, 1, 0, 1) end
     pin:ClearAllPoints()
     pin:SetPoint("CENTER", canvas, "TOPLEFT", point.x / 100 * width, -point.y / 100 * height)
-    pin:SetFrameStrata("HIGH")
+    pin:SetFrameStrata(canvas:GetFrameStrata() or "MEDIUM")
+    pin:SetFrameLevel(level)
     pin:Show()
   end
   for i = shown + 1, #pins do pins[i]:Hide() end

@@ -2,6 +2,11 @@ local ADDON, ns = ...
 
 ns.ADDON = ADDON
 
+-- The addon's own logo, 64x64 and bottom-up, which is what the client wants. It lives here
+-- rather than beside the minimap button because the welcome screen wears it too, and that file
+-- loads first.
+ns.LOGO = "Interface\\AddOns\\ForeverBuddy\\Media\\logo"
+
 -- Shared colour table; keys are used by UsedFor/Verdict.lua and UsedFor/Tooltip.lua.
 ns.COLORS = {
   active     = { 0.2, 1,    0.2 },
@@ -14,6 +19,42 @@ ns.COLORS = {
   horde      = { 0.77, 0.12, 0.23 },
   alliance   = { 0.0,  0.44, 0.87 },
 }
+
+-- The game's own quest difficulty colours. Every player can already read these: a yellow quest
+-- is the one to do now, a grey one is long behind you. "Where to level" leans on that entirely
+-- rather than inventing a legend of its own.
+ns.DIFFICULTY = {
+  red    = { 1,    0.1,  0.1  },
+  orange = { 1,    0.5,  0.25 },
+  yellow = { 1,    0.82, 0    },
+  green  = { 0.25, 0.75, 0.25 },
+  grey   = { 0.6,  0.6,  0.6  },
+}
+
+-- A dungeon's level range, which Forever does not always have: a dungeon it has built but not
+-- tuned carries no range at all, and one it has only given a floor to carries no ceiling.
+-- Returns lo, hi, either of which may be nil.
+function ns.DungeonLevels(dungeon)
+  local range = dungeon and dungeon.level
+  if type(range) ~= "table" then return nil, nil end
+  local lo, hi = range[1], range[2]
+  if not lo or lo == 0 then return nil, nil end
+  return lo, (hi and hi > 0) and hi or nil
+end
+
+-- style: nil for a card ("LV 13-18"), "long" for a heading ("Level 13-18"), "bare" for a
+-- sentence that already has a name in front of it ("Ragefire Chasm 13-18, 3 quests").
+function ns.DungeonLevelText(dungeon, style)
+  local lo, hi = ns.DungeonLevels(dungeon)
+  local prefix = (style == "long" and "Level ") or (style == "bare" and "") or "LV "
+  if not lo then
+    return style == "long" and "Level not set yet" or (style == "bare" and "level not set yet" or "LV ?")
+  end
+  if not hi then
+    return style == "long" and ("Level %d and up"):format(lo) or ("%s%d+"):format(prefix, lo)
+  end
+  return ("%s%d-%d"):format(prefix, lo, hi)
+end
 
 -- Item quality colours, for naming an item we only know from our own data files.
 ns.QUALITY_COLOR = {
@@ -161,6 +202,22 @@ local function CVarReady()
   return C_CVar and C_CVar.GetCVar and C_CVar.SetCVar and true or false
 end
 
+local JUNK_CARRIED = 50
+
+-- The ids of a set, smallest first, as "123,456". Capped, so one long list cannot push the
+-- rest of the settings out of the console setting they share.
+function ns.IdList(set)
+  local ids = {}
+  for id in pairs(set or {}) do
+    local n = tonumber(id)
+    if n then table.insert(ids, n) end
+  end
+  table.sort(ids)
+  local out = {}
+  for i = 1, math.min(#ids, JUNK_CARRIED) do out[i] = tostring(ids[i]) end
+  return table.concat(out, ",")
+end
+
 function ns.SettingsString()
   if not (ns.db and ns.db.features) then return nil end
   local flags = {}
@@ -179,8 +236,16 @@ function ns.SettingsString()
     if value == false then table.insert(tags, tag) end -- only the ones turned off need keeping
   end
   table.sort(tags)
-  return ("v1;setup=%d;f=%s;p=%s;t=%s"):format(ns.db.setupDone and 1 or 0,
-    table.concat(flags, ","), table.concat(pins, ","), table.concat(tags, ","))
+  -- Where the minimap button was dragged to rides along: it is a setting like any other.
+  local angle = tonumber(ns.db.minimapAngle)
+  -- So do the items you marked keep or sell. A console setting is not the place for a long
+  -- list, so only the first JUNK_CARRIED of each go; the rest wait in the saved file for the
+  -- day the client reads it back.
+  local junk = ns.db.junk or {}
+  return ("v1;setup=%d;f=%s;p=%s;t=%s;m=%s;k=%s;j=%s"):format(ns.db.setupDone and 1 or 0,
+    table.concat(flags, ","), table.concat(pins, ","), table.concat(tags, ","),
+    angle and tostring(math.floor(angle)) or "",
+    ns.IdList(junk.keep), ns.IdList(junk.sell))
 end
 
 function ns.SaveSettingsFallback()
@@ -217,6 +282,13 @@ function ns.RestoreSettingsFallback()
     ns.db.pins.tags[tag] = false
     restored = restored + 1
   end
+  local angle = tonumber(raw:match("m=(%-?%d+)"))
+  if angle then ns.db.minimapAngle = angle end -- a moved button, not a switch: not counted
+  ns.db.junk = ns.db.junk or { keep = {}, sell = {} }
+  ns.db.junk.keep = ns.db.junk.keep or {}
+  ns.db.junk.sell = ns.db.junk.sell or {}
+  for id in (raw:match("k=([^;]*)") or ""):gmatch("(%d+)") do ns.db.junk.keep[tonumber(id)] = true end
+  for id in (raw:match("j=([^;]*)") or ""):gmatch("(%d+)") do ns.db.junk.sell[tonumber(id)] = true end
   return restored
 end
 

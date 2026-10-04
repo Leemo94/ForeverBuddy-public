@@ -33,6 +33,80 @@ function ns.DarkenLeft(texture)
   return ok
 end
 
+-- The look ------------------------------------------------------------------
+-- Warm brown panels with a gold-brown edge, headings in gold over a rule, and text big enough
+-- to read across a room. It is how the game draws its own journals, and the point is that
+-- nothing on our screens should look like it came from somewhere else.
+ns.SKIN = {
+  panel      = { 0.09,  0.07,  0.045, 0.92 },
+  inner      = { 0.135, 0.105, 0.065, 0.92 },
+  row        = { 0.17,  0.13,  0.08,  0.55 },
+  selected   = { 0.30,  0.23,  0.12,  1    },
+  border     = { 0.40,  0.32,  0.18,  1    },
+  borderLit  = { 0.76,  0.61,  0.30,  1    },
+  gold       = { 1,     0.82,  0      },
+  body       = { 0.91,  0.86,  0.75   },
+  muted      = { 0.60,  0.56,  0.47   },
+}
+
+-- A bordered panel: a fill and four one-pixel edges, which every client can draw. Backdrops
+-- come and go between versions; four textures do not.
+--
+-- It is a frame, not a texture, so it draws over everything on its parent whatever layer that
+-- parent's bits are on. Put it behind anything of the parent's it should not cover, with
+-- SetFrameLevel one below the parent's.
+function ns.Panel(parent, fill)
+  local frame = CreateFrame("Frame", nil, parent)
+  frame.bg = frame:CreateTexture(nil, "BACKGROUND")
+  frame.bg:SetAllPoints()
+  frame.bg:SetColorTexture(unpack(fill or ns.SKIN.panel))
+  frame.edges = {}
+  for _, side in ipairs({ "TOP", "BOTTOM", "LEFT", "RIGHT" }) do
+    local edge = frame:CreateTexture(nil, "BORDER")
+    edge:SetColorTexture(unpack(ns.SKIN.border))
+    if side == "TOP" or side == "BOTTOM" then
+      edge:SetHeight(1)
+      edge:SetPoint(side .. "LEFT")
+      edge:SetPoint(side .. "RIGHT")
+    else
+      edge:SetWidth(1)
+      edge:SetPoint("TOP" .. side)
+      edge:SetPoint("BOTTOM" .. side)
+    end
+    frame.edges[side] = edge
+  end
+  function frame:SetEdgeColor(colour)
+    for _, edge in pairs(self.edges) do edge:SetColorTexture(unpack(colour)) end
+  end
+  function frame:SetFill(colour)
+    self.bg:SetColorTexture(unpack(colour))
+  end
+  return frame
+end
+
+-- The client's own font at whatever size we ask for, so nothing is hard-coded to a file that
+-- may not exist on a given build.
+function ns.SetFontSize(fontString, size, outline)
+  local base = rawget(_G, "GameFontNormal")
+  if not (base and base.GetFont and fontString and fontString.SetFont) then return fontString end
+  local file, _, flags = base:GetFont()
+  if file then pcall(fontString.SetFont, fontString, file, size, outline or flags) end
+  return fontString
+end
+
+-- A gold heading with a rule under it, the way every panel in the game separates its sections.
+function ns.Heading(parent, text, size)
+  local label = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+  ns.SetFontSize(label, size or 15)
+  label:SetTextColor(unpack(ns.SKIN.gold))
+  if text then label:SetText(text) end
+  local rule = parent:CreateTexture(nil, "ARTWORK")
+  rule:SetHeight(1)
+  rule:SetColorTexture(unpack(ns.SKIN.border))
+  label.rule = rule
+  return label
+end
+
 -- Cut a wrapped string off after so many lines instead of letting it grow over its neighbour.
 function ns.LimitLines(fontString, lines)
   if not fontString.SetMaxLines then return false end

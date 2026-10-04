@@ -69,6 +69,16 @@ LOADING_SCREENS = {
     "diremaul": 131835,
     "scholomance": 131868,
     "stratholme": 131871,
+    # Forever's unreleased instances, joined the same way from build 1.60.1.70178.
+    "cityofdalaran": 7963775,
+    "karazhancrypts": 6514589,
+    "demonfallcanyon": 6213069,
+    "shadowhold": 7963779,
+    "starfallbarrowden": 7963779,
+    "burningandorhal": 131866,
+    "searingbasin": 7963776,
+    "manormistmantle": 7963776,
+    "scarabdais": None,
 }
 
 # key, name, Questie/AreaTable zone id, recommended level range, faction whose city holds the entrance (or None), aliases
@@ -99,6 +109,21 @@ DUNGEONS = [
     ("diremaul", "Dire Maul", 2557, 55, 60, None, ["dire", "maul"]),
     ("stratholme", "Stratholme", 2017, 58, 60, None, ["strat"]),
     ("scholomance", "Scholomance", 2057, 58, 60, None, ["scholo"]),
+
+    # Instances Forever has built but not released. Each one is a real map in the client
+    # (Map.db2, InstanceType 1) with its own AreaTable id; the levels come from ContentTuning,
+    # which is filled in as Blizzard tunes them, so most are None = "not set yet" and the
+    # journal says so rather than inventing a range. They hold no quests until the quest
+    # scanner or a player's recording finds some. Checked against build 1.60.1.70178.
+    ("cityofdalaran", "City of Dalaran", 16544, 28, None, None, ["dalaran", "cod"]),
+    ("karazhancrypts", "Karazhan Crypts", 16074, None, None, None, ["crypts", "kara", "karazhan"]),
+    ("demonfallcanyon", "Demon Fall Canyon", 15475, None, None, None, ["dfc", "demonfall", "canyon"]),
+    ("shadowhold", "Shadow Hold", 16362, None, None, None, ["shadowhold", "jaedenar"]),
+    ("starfallbarrowden", "Starfall Barrow Den", 15938, None, None, None, ["starfall", "barrowden", "den"]),
+    ("burningandorhal", "The Burning of Andorhal", 15828, None, None, None, ["andorhal", "burning"]),
+    ("searingbasin", "The Searing Basin", 15159, None, None, None, ["searing", "basin"]),
+    ("manormistmantle", "Manor Mistmantle", 17191, None, None, None, ["mistmantle", "manor"]),
+    ("scarabdais", "The Scarab Dais", 16295, None, None, None, ["scarab", "dais"]),
 ]
 DUNGEON_ZONES = {d[2] for d in DUNGEONS}
 
@@ -106,6 +131,37 @@ DUNGEON_ZONES = {d[2] for d in DUNGEONS}
 # levels are checked against Wowhead's Forever data; places come from playing and from what the
 # collector recorded. Anything here is merged on top of what the rules find.
 CURATED = {
+    # Forever's own dungeon in the Wetlands. The Alliance side of it is still unwritten; this is
+    # the Horde quest, reported from the game: picked up at 25 from Borstan the meat vendor in
+    # Orgrimmar, whose id and coordinates come from Questie. Wowhead's Forever data calls the
+    # quest level 31 and wants four Thicket Raptor Meat. Whether it can be shared, and whether
+    # it is handed back to Borstan or to Zamja beside him, nobody has written down yet.
+    "excavationwetlands": [
+        {"id": 95697, "name": "Changing Tastes", "level": 31, "req": 25, "faction": "Horde",
+         "share": "unknown",
+         "giver": {"name": "Borstan", "where": "Orgrimmar", "map": 1454, "x": 57.2, "y": 53.3, "kind": "npc"},
+         "note": "In the Drag: from the auction house, straight up the stairs to the meat vendor. Four Thicket Raptor Meat"},
+        # The rest came out of Wowhead's Forever data, which gives the name, the level and what
+        # the quest asks of you, and never says who hands it out. So: no giver, and a side only
+        # where the text names somebody who can only be one ("the Deathstalker Agent" is
+        # Forsaken; Prospector Whelgar and Menethil Harbor are the Alliance's). The arrow has
+        # nothing to point at until somebody walks up to the right NPC with the collector on.
+        {"id": 95646, "name": "Horrors in the Highland", "level": 31, "share": "unknown",
+         "turnin": {"name": "Rethiel the Greenwarden", "where": "Wetlands", "map": 1437, "x": None, "y": None, "kind": "npc"},
+         "note": "Kill a Highland Horror inside and take its root core to Rethiel the Greenwarden in the Wetlands"},
+        {"id": 95647, "name": "Lost in the Thicket Things", "level": 31, "share": "unknown",
+         "note": "Find Ardin Grassman in the Excavation Sites"},
+        {"id": 95682, "name": "Open the Maw", "level": 31, "faction": "Horde", "share": "unknown",
+         "note": "Slay the Dragonmaw inside and return to the Deathstalker Agent outside with anything you recover"},
+        {"id": 95772, "name": "Songblade Search", "level": 31, "share": "unknown",
+         "note": "Look for Dorin Songblade's brother, Daewyn, in Whelgar's Excavation Site"},
+        {"id": 95810, "name": "Lost Relic Carry", "level": 31, "faction": "Alliance", "share": "unknown",
+         "turnin": {"name": "Prospector Whelgar", "where": "Wetlands", "map": 1437, "x": None, "y": None, "kind": "npc"},
+         "note": "Bring the Titan Relic to Prospector Whelgar at the Wetlands excavation site"},
+        {"id": 98815, "name": "Highland Hides", "level": 31, "faction": "Alliance", "share": "unknown",
+         "turnin": {"name": "James Halloran", "where": "Menethil Harbor", "map": 1437, "x": None, "y": None, "kind": "npc"},
+         "note": "Four Thicket Raptor Hides to James Halloran, the tanner, in Menethil Harbor"},
+    ],
     "ruinsoflordaeron": [
         {"id": 92401, "name": "A Frightened Request", "level": 22, "faction": "Horde", "share": "yes",
          "giver": {"name": "Tabitha Heartweaver", "where": "Silverpine Forest", "map": 1421, "x": None, "y": None, "kind": "npc"},
@@ -407,7 +463,8 @@ def build_dungeons(world):
         rows.sort(key=lambda r: (r["level"], r["name"]))
         out.append({"key": key, "name": name, "zone": zone, "lo": lo, "hi": hi, "faction": faction, "aliases": aliases,
                     "screen": LOADING_SCREENS.get(key), "quests": rows})
-    out.sort(key=lambda d: (d["lo"], d["hi"], d["name"]))
+    # A dungeon Blizzard has not tuned yet has no level to sort by, so it goes to the end.
+    out.sort(key=lambda d: (d["lo"] is None, d["lo"] or 0, d["hi"] or d["lo"] or 0, d["name"]))
     return out
 
 
@@ -442,12 +499,39 @@ def level_range(levels, cover=0.75):
     return max(1, best[0]), max(best[1], best[0])
 
 
-def zone_faction(a, h, n):
-    if n and a / n >= 0.6:
-        return "Alliance"
-    if n and h / n >= 0.6:
-        return "Horde"
-    return None
+# Whose zone is this? Counting every quest in it answers the wrong question, because most zones
+# are mostly neutral quests; what tells you where a side levels is how the *faction-locked*
+# quests split. A zone with almost none of one side's is that side's in practice even where the
+# other side can walk in: nothing stops a Night Elf questing in Durotar, but there is nothing
+# there for them.
+#
+#   85% or more of the locked quests -> the zone is that side's
+#   55% or more                      -> it leans that way, shown fainter
+#   fewer than 6 locked quests       -> not enough to say anything
+#
+# A lean also needs the locked quests to be a real part of the zone: Tanaris has 6 Alliance and
+# 9 Horde quests among 91, and calling it "mostly Horde" off fifteen would be nonsense. A side
+# with no quests at all is different, which is why a solid tag does not ask for that share.
+SOLID, LEAN, ENOUGH, LEAN_SHARE_OF_ZONE = 0.85, 0.55, 6, 0.35
+
+
+def zone_faction(a, h, total=None):
+    """Returns side, leaning: ("Horde", False) for Durotar, ("Horde", True) for Stonetalon."""
+    locked = a + h
+    if locked < ENOUGH:
+        return None, False
+    share = a / locked
+    if share >= SOLID:
+        return "Alliance", False
+    if 1 - share >= SOLID:
+        return "Horde", False
+    if total and locked / total < LEAN_SHARE_OF_ZONE:
+        return None, False  # a handful of locked quests in a zone of neutral ones says nothing
+    if share >= LEAN:
+        return "Alliance", True
+    if 1 - share >= LEAN:
+        return "Horde", True
+    return None, False
 
 
 def build_zones(world, min_quests=6):
@@ -475,13 +559,16 @@ def build_zones(world, min_quests=6):
         if len(z["levels"]) < min_quests:
             continue
         lo, hi = ZONE_OVERRIDES.get(world.zone_name(zone)) or level_range(z["levels"])
+        side, leaning = zone_faction(z["a"], z["h"], len(z["levels"]))
         out.append({"zone": zone, "name": world.zone_name(zone), "continent": world.continents.get(zone),
-                    "lo": lo, "hi": hi, "quests": len(z["levels"]), "faction": zone_faction(z["a"], z["h"], len(z["levels"]))})
+                    "lo": lo, "hi": hi, "quests": len(z["levels"]), "faction": side, "leaning": leaning,
+                    "alliance": z["a"], "horde": z["h"]})
     have = {r["name"] for r in out}
     for name, continent, lo, hi, source in CURATED_ZONES:
         if name not in have:
             out.append({"zone": 0, "name": name, "continent": continent, "lo": lo, "hi": hi,
-                        "quests": 0, "faction": None, "source": source})
+                        "quests": 0, "faction": None, "leaning": False, "alliance": 0, "horde": 0,
+                        "source": source})
     out.sort(key=lambda r: (r["lo"], r["hi"], r["name"]))
     return out
 
@@ -496,13 +583,21 @@ def lua_place(p):
         ("%.1f" % p["x"]) if p["x"] is not None else "false", ("%.1f" % p["y"]) if p["y"] is not None else "false", lua_string(p["kind"]))
 
 
+# "{ 13, 18 }" for a tuned dungeon, "{ 28, 0 }" where only the floor is known, "false" for one
+# Blizzard has not tuned at all. The addon reads all three.
+def lua_level(lo, hi):
+    if lo is None:
+        return "false"
+    return "{ %d, %d }" % (lo, hi or 0)
+
+
 def emit_dungeons(dungeons, generated):
     lines = ["local _, ns = ...", "", "-- GENERATED by tools/build_dungeons.py from Questie's Classic database; do not edit by hand.",
              "ns.DungeonInfo = { generated = %s, dungeons = %d, quests = %d }" % (
                  lua_string(generated), len(dungeons), sum(len(d["quests"]) for d in dungeons)), "", "ns.Dungeons = {"]
     for d in dungeons:
-        lines.append("  { key = %s, name = %s, zone = %d, level = { %d, %d }, faction = %s, screen = %s, aliases = { %s }, quests = {" % (
-            lua_string(d["key"]), lua_string(d["name"]), d["zone"], d["lo"], d["hi"],
+        lines.append("  { key = %s, name = %s, zone = %d, level = %s, faction = %s, screen = %s, aliases = { %s }, quests = {" % (
+            lua_string(d["key"]), lua_string(d["name"]), d["zone"], lua_level(d["lo"], d["hi"]),
             lua_string(d["faction"]) if d["faction"] else "false", d["screen"] or "false",
             ", ".join(lua_string(a) for a in d["aliases"])))
         for q in d["quests"]:
@@ -523,9 +618,10 @@ def emit_zones(zones, generated):
     lines = ["local _, ns = ...", "", "-- GENERATED by tools/build_dungeons.py from Questie's Classic database; do not edit by hand.",
              "ns.ZoneInfo = { generated = %s, zones = %d }" % (lua_string(generated), len(zones)), "", "ns.Zones = {"]
     for z in zones:
-        lines.append("  { zone = %d, name = %s, continent = %s, level = { %d, %d }, quests = %d, faction = %s, source = %s }," % (
+        lines.append("  { zone = %d, name = %s, continent = %s, level = { %d, %d }, quests = %d, faction = %s, leaning = %s, alliance = %d, horde = %d, source = %s }," % (
             z["zone"], lua_string(z["name"]), lua_string(z["continent"] or "?"), z["lo"], z["hi"], z["quests"],
-            lua_string(z["faction"]) if z["faction"] else "false", lua_string(z.get("source") or "quests")))
+            lua_string(z["faction"]) if z["faction"] else "false", "true" if z.get("leaning") else "false",
+            z.get("alliance") or 0, z.get("horde") or 0, lua_string(z.get("source") or "quests")))
     lines.append("}")
     return "\n".join(lines) + "\n"
 
@@ -555,7 +651,11 @@ def main(argv=None):
     print("Dungeons.lua: %d dungeons, %d quests" % (len(dungeons), sum(len(d["quests"]) for d in dungeons)))
     print("Zones.lua: %d zones" % len(zones))
     for z in zones:
-        print("  %-24s %2d-%-2d %3d quests %s" % (z["name"], z["lo"], z["hi"], z["quests"], z["faction"] or "both"))
+        side = z["faction"] or "both"
+        if z.get("leaning"):
+            side = "mostly " + side
+        print("  %-24s %2d-%-2d %3d quests  %-14s (%d A, %d H)" % (
+            z["name"], z["lo"], z["hi"], z["quests"], side, z.get("alliance") or 0, z.get("horde") or 0))
 
 
 if __name__ == "__main__":

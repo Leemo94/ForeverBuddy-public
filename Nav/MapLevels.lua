@@ -17,18 +17,37 @@ local overlay
 -- Forever ships no level tuning for zones: every zone's ContentTuningID is 0 in this build, so
 -- the client's own GetMapLevels answers nothing and Blizzard's map label shows no range. Our own
 -- ranges, worked out from where quests of each level are, stand in for it.
-local byName
+local byName, builtFrom
 
+-- Rebuilt whenever the zone table itself is swapped, which is how Data/Observed.lua or a test
+-- replaces it: an index that never notices is an index that quietly goes stale.
 local function ZoneLevelsByName(name)
-  if not byName then
-    byName = {}
-    for _, z in ipairs(ns.Zones or {}) do
+  local source = ns.Zones or false
+  if not byName or builtFrom ~= source then
+    byName, builtFrom = {}, source
+    for _, z in ipairs(source or {}) do
       byName[z.name:lower()] = z
     end
   end
   return name and byName[name:lower()] or nil
 end
 ns.ZoneLevelsByName = ZoneLevelsByName
+
+-- Whose zone it is, from how the faction-locked quests in it split: side ("Alliance"|"Horde"|
+-- nil), whether that is only a lean, and the two counts. A zone nobody has quest data for
+-- answers nil, which reads as "both sides" everywhere it is shown.
+function ns.ZoneSide(name)
+  local zone = name and ZoneLevelsByName(name)
+  if not zone then return nil, false, 0, 0, 0 end
+  return zone.faction or nil, zone.leaning == true, zone.alliance or 0, zone.horde or 0, zone.quests or 0
+end
+
+-- "Horde", "mostly Horde", or "both sides".
+function ns.ZoneSideText(name)
+  local side, leaning = ns.ZoneSide(name)
+  if not side then return "both sides" end
+  return leaning and ("mostly " .. side) or side
+end
 
 -- min, max, source for a map, or nil when nothing knows it.
 function ns.MapLevels(mapID)
@@ -112,7 +131,10 @@ function ns.ZonesOnMap(mapID)
     local minLevel, maxLevel, source = ns.MapLevels(child.mapID)
     if minLevel then
       local left, right, top, bottom = C_Map.GetMapRectOnMap(child.mapID, mapID)
-      local zone = { mapID = child.mapID, parent = mapID, name = child.name, min = minLevel, max = maxLevel, source = source }
+      local side, leaning, alliance, horde, quests = ns.ZoneSide(child.name)
+      local zone = { mapID = child.mapID, parent = mapID, name = child.name, min = minLevel, max = maxLevel,
+                     source = source, faction = side, leaning = leaning, alliance = alliance, horde = horde,
+                     quests = quests }
       if left and right and top and bottom then
         local key = mapID .. ":" .. child.mapID
         local cached = labelPoints[key]

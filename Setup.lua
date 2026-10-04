@@ -53,7 +53,7 @@ ns.SETUP_PAGES = {
   },
   {
     title = "At the vendor",
-    body = "Open a vendor and, if you want, your gear is repaired and your grey junk is sold. Each one prints a single line in chat, like:\n\n|cff33ff99ForeverBuddy|r: repaired for 12s 40c\n|cff33ff99ForeverBuddy|r: sold 6 junk items for 1s 8c",
+    body = "Open a vendor and, if you want, your gear is repaired and your grey junk is sold. Each one prints a single line in chat, like:\n\n|cff33ff99ForeverBuddy|r: repaired for 12s 40c\n|cff33ff99ForeverBuddy|r: sold 6 junk items for 1s 8c\n\nCtrl + right click anything in your bags to add it to the sell list, or to protect a grey you want to keep. Clicking it again takes it off.",
     features = { "autorepair", "selljunk", "sellunusable" },
   },
   {

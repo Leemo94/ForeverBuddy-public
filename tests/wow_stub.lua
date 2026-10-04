@@ -56,6 +56,10 @@ function Stub.reset()
   Stub.guild, Stub.group = false, nil
   Stub.now = 0                -- what GetTime answers
   Stub.shift = false
+  Stub.ctrl = false
+  Stub.registeredPrefix = nil
+  Stub.bank = {}
+  Stub.professions = nil
   Stub.timers = {}
   Stub.calls = {}        -- { {name, arg1, arg2, ...}, ... } every automation-relevant C call
   Stub.money = 0
@@ -142,6 +146,22 @@ Stub.call = call
 function Stub.CallNames() local out = {} for i, c in ipairs(Stub.calls) do out[i] = c[1] end return out end
 
 C_Item = {
+  -- Everything in the bags, plus Stub.bank when the caller asks for it, the way the client
+  -- counts an item across the places it can be.
+  GetItemCount = function(id, includeBank)
+    local total = 0
+    for _, slots in pairs(Stub.bags or {}) do
+      for _, info in pairs(slots or {}) do
+        if info and info.itemID == id then total = total + (info.stackCount or 1) end
+      end
+    end
+    if includeBank then
+      for item, n in pairs(Stub.bank or {}) do
+        if item == id then total = total + n end
+      end
+    end
+    return total
+  end,
   -- Stub.items[id] is a name, or { name=, sellPrice= }; GetItemInfo returns the 11 client values used by the addon.
   GetItemInfo = function(id)
     local entry = Stub.items[id]
@@ -171,10 +191,17 @@ function UnitFactionGroup() return Stub.faction end
 function UnitClass() return "Name", Stub.classToken end
 function UnitRace() return Stub.raceName or "Undead", Stub.raceFile or "Scourge" end
 function IsShiftKeyDown() return Stub.shift end
+function IsControlKeyDown() return Stub.ctrl end
 
 -- Frame mock: any unknown method is a no-op; the handful the addon reads back are stateful.
+-- A frame answers any method we have not bothered to write with a no-op, so the addon can call
+-- whatever the client offers. Only methods: the client's are all CamelCase, and a plain field
+-- nobody has set reads as nil, as it does in the game. Handing back a no-op for those was
+-- hiding real bugs - a GetText() that returned a function, and a field set to nil that read
+-- back as one.
 local MockMT = {}
 MockMT.__index = function(self, key)
+  if type(key) ~= "string" or not key:match("^%u") then return nil end
   local noop = function() end
   rawset(self, key, noop)
   return noop
@@ -203,7 +230,9 @@ local function NewMock(kind, name, template)
   function m:SetChecked(v) self.checked = v and true or false end
   function m:GetChecked() return self.checked end
   function m:SetText(t) self.text = t end
-  function m:GetText() return self.text end
+  -- rawget, or a frame nobody has called SetText on answers with the no-op that __index hands
+  -- out for any missing field, and the caller gets a function where it expected a string.
+  function m:GetText() return rawget(self, "text") end
   function m:Click()
     if self.kind == "CheckButton" then self.checked = not self.checked end
     if self.scripts.OnClick then self.scripts.OnClick(self, "LeftButton") end
@@ -240,6 +269,8 @@ local function NewMock(kind, name, template)
   if kind == "Texture" then
     function m:SetTexture(path) self.texture = path end
     function m:GetTexture() return self.texture end
+    function m:SetAlpha(value) self.alpha = value end
+    function m:GetAlpha() return self.alpha or 1 end
   end
   function m:CreateTexture(n, layer)
     local tx = NewMock("Texture", n)
@@ -266,6 +297,10 @@ end
 Stub.version = "0.3.0"
 C_AddOns = { GetAddOnMetadata = function(name, field) return Stub.version end }
 function ContainerFrame_Update() end
+function ContainerFrameItemButton_OnModifiedClick() end -- Classic bag buttons
+-- The client's font objects, which the addon reads a font file and size out of.
+GameFontNormal = { GetFont = function() return "Fonts\\FRIZQT__.TTF", 12, "" end }
+GameFontNormalLarge = GameFontNormal
 UIParent = NewMock("Frame", "UIParent")
 MerchantFrame = NewMock("Frame", "MerchantFrame")
 UISpecialFrames = {}
@@ -312,6 +347,18 @@ C_ChatInfo = {
     return true
   end,
 }
+-- The character's professions, as two primaries plus the secondaries, the way the client
+-- reports them. Stub.professions is a list of names.
+function GetProfessions()
+  local list = Stub.professions or {}
+  return list[1] and 1 or nil, list[2] and 2 or nil, nil, list[3] and 3 or nil,
+         list[4] and 4 or nil, list[5] and 5 or nil
+end
+function GetProfessionInfo(index)
+  local name = (Stub.professions or {})[index]
+  return name
+end
+
 function IsInGuild() return Stub.guild == true end
 function IsInGroup() return Stub.group == "party" or Stub.group == "raid" end
 function IsInRaid() return Stub.group == "raid" end
@@ -567,7 +614,9 @@ if Stub.mainline then
   GetItemStats = nil
   GetFactionInfoByID = nil
   ContainerFrame_Update = nil
+  ContainerFrameItemButton_OnModifiedClick = nil
   ContainerFrameMixin = { UpdateItems = function() end }
+  ContainerFrameItemButtonMixin = { OnModifiedClick = function() end }
   C_Item.GetItemStats = function(link) return Stub.itemStats[link] end
   C_Reputation = { GetFactionDataByID = function(id) local n = Stub.factions[id]; return n and { name = n } or nil end }
   Enum.BagIndex = { CharacterBankTab_1 = 6, CharacterBankTab_2 = 7, CharacterBankTab_3 = 8, CharacterBankTab_4 = 9, CharacterBankTab_5 = 10, CharacterBankTab_6 = 11 }

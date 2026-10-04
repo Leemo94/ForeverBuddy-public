@@ -13,7 +13,11 @@ local SLACK = 2 -- a zone still counts when the level is this close to its band
 function ns.ZonesForLevel(level, faction)
   local out = {}
   for _, z in ipairs(ns.Zones) do
-    if not z.faction or not faction or z.faction == faction then
+    -- A zone that only leans the other way still has quests for you: Ashenvale is mostly the
+    -- Alliance's and still holds 23 Horde quests. Only a zone that is wholly one side's drops
+    -- off the other side's list.
+    local theirs = z.faction and not z.leaning and faction and z.faction ~= faction
+    if not theirs then
       local lo, hi = z.level[1], z.level[2]
       local fit = (level < lo and lo - level) or (level > hi and level - hi) or 0
       if fit <= SLACK then table.insert(out, { zone = z, fit = fit }) end
@@ -34,7 +38,13 @@ end
 function ns.ZoneLine(entry)
   local z = entry.zone
   local s = ("%s %d-%d, %d quests"):format(z.name, z.level[1], z.level[2], z.quests)
-  if not z.faction then s = s .. ", both factions" end
+  if not z.faction then
+    s = s .. ", both factions"
+  elseif z.leaning then
+    s = s .. (", mostly %s (%d Alliance, %d Horde)"):format(z.faction, z.alliance or 0, z.horde or 0)
+  else
+    s = s .. ", " .. z.faction
+  end
   return s
 end
 

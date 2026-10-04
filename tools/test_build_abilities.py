@@ -33,7 +33,7 @@ class Build(unittest.TestCase):
         self.assertIn('ns.AbilityInfo = { generated = "2026-09-28", build = "1.60.1.69893", '
                       'classes = 2, abilities = 4 }', text)
         self.assertIn('  PALADIN = {', text)
-        self.assertIn('    { 853, "Hammer of Justice", 8, 0, "a", false, false },', text)
+        self.assertIn('    { 853, "Hammer of Justice", 8, 0, "a", false, false, false },', text)
         self.assertTrue(text.endswith("}\n"))
 
 
@@ -93,8 +93,8 @@ class RaceLocks(unittest.TestCase):
 
     def test_the_races_reach_the_lua(self):
         text = ba.emit(ba.build(self.DATA, None, None, self.OFFERED, self.RACES), "2026-09-28", "b")
-        self.assertIn('"Starshards", 10, 0, "a", false, "NightElf" },', text)
-        self.assertIn('"Smite", 1, 0, "c", false, false },', text)
+        self.assertIn('"Starshards", 10, 0, "a", false, "NightElf", false },', text)
+        self.assertIn('"Smite", 1, 0, "c", false, false, false },', text)
 
 
 class TrainerTruth(unittest.TestCase):
@@ -110,6 +110,20 @@ class TrainerTruth(unittest.TestCase):
         self.assertTrue(rows["Hammer of Justice"]["trained"])
         self.assertEqual(rows["Holy Light"]["level"], 1)
         self.assertFalse(rows["Holy Light"]["trained"], "nobody has seen this one at a trainer")
+
+    def test_a_table_flag_cannot_remove_what_a_trainer_was_selling(self):
+        # The 1.60.1.70178 patch moved Tiger's Fury to acquire method 3, which is a rune and
+        # would normally be dropped. A recorded druid trainer was selling it, so it stays.
+        acquire = {853: {"3"}, 635: {"0"}}
+        out = ba.build(self.DATA, acquire, {853: 24})
+        rows = {s["name"]: s for s in out["PALADIN"]}
+        self.assertIn("Hammer of Justice", rows, "seen for sale means trainable")
+        self.assertEqual(rows["Hammer of Justice"]["level"], 24)
+
+    def test_a_rune_nobody_has_seen_at_a_trainer_still_goes(self):
+        acquire = {853: {"3"}, 635: {"0"}}
+        out = ba.build(self.DATA, acquire, {})
+        self.assertNotIn("Hammer of Justice", {s["name"] for s in out["PALADIN"]})
 
     def test_the_order_follows_the_corrected_level(self):
         out = ba.build(self.DATA, None, {635: 30})
@@ -128,8 +142,51 @@ class TrainerTruth(unittest.TestCase):
 
     def test_emit_carries_the_trained_flag(self):
         text = ba.emit(ba.build(self.DATA, None, {853: 12}), "2026-09-28", "b")
-        self.assertIn('{ 853, "Hammer of Justice", 12, 0, "a", true, false },', text)
-        self.assertIn('{ 635, "Holy Light", 1, 0, "b", false, false },', text)
+        self.assertIn('{ 853, "Hammer of Justice", 12, 0, "a", true, false, false },', text)
+        self.assertIn('{ 635, "Holy Light", 1, 0, "b", false, false, false },', text)
+
+
+class TalentMarks(unittest.TestCase):
+    """A name in Forever's own talent trees is a point you spend, not a spell you buy."""
+
+    DATA = Build.DATA
+
+    def test_a_talent_is_marked_and_the_rest_are_not(self):
+        out = ba.build(self.DATA, None, None, None, None, {"PALADIN": {"Hammer of Justice"}})
+        rows = {(s["name"], s["level"]): s for s in out["PALADIN"]}
+        self.assertTrue(rows[("Hammer of Justice", 8)]["talent"], "and so is every rank of it")
+        self.assertTrue(rows[("Hammer of Justice", 24)]["talent"])
+        self.assertFalse(rows[("Holy Light", 1)]["talent"])
+
+    def test_the_tree_belongs_to_its_own_class(self):
+        out = ba.build(self.DATA, None, None, None, None, {"MAGE": {"Hammer of Justice"}})
+        rows = {s["name"]: s for s in out["PALADIN"]}
+        self.assertFalse(rows["Hammer of Justice"]["talent"],
+                         "a mage talent of the same name says nothing about the paladin spell")
+
+    def test_no_trees_at_all_marks_nothing(self):
+        out = ba.build(self.DATA)
+        self.assertFalse(any(s["talent"] for rows in out.values() for s in rows))
+
+    def test_the_mark_reaches_the_lua(self):
+        out = ba.build(self.DATA, None, None, None, None, {"PALADIN": {"Hammer of Justice"}})
+        text = ba.emit(out, "2026-09-28", "b")
+        self.assertIn('{ 853, "Hammer of Justice", 8, 0, "a", false, false, true },', text)
+        self.assertIn('{ 635, "Holy Light", 1, 0, "b", false, false, false },', text)
+
+    def test_talent_names_survive_a_round_trip(self):
+        import json as _json, tempfile, os as _os
+        trees = {"classes": {"Hunter": {"Marksmanship": {"Trueshot Aura": {"col": 1},
+                                                       "Aimed Shot": {"col": 2}}},
+                             "Not A Class": {"Tab": {"Whatever": {}}}}}
+        with tempfile.TemporaryDirectory() as d:
+            path = _os.path.join(d, "talents.json")
+            with open(path, "w") as f:
+                _json.dump(trees, f)
+            names = ba.talent_names(path)
+        self.assertEqual(names.get("HUNTER"), {"Trueshot Aura", "Aimed Shot"})
+        self.assertNotIn("Not A Class", names, "a tree for a class Forever does not have is skipped")
+        self.assertEqual(ba.talent_names("/nope.json"), {})
 
 
 if __name__ == "__main__":

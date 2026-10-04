@@ -109,4 +109,98 @@ T.run("does nothing when the feature is off", function()
   ns.db = nil
 end)
 
+T.run("ctrl + right click lists an item for selling, and a second click takes it off", function()
+  bags()
+  ns.db = { features = {} }
+  Stub.ctrl = true
+  local button = Stub.NewMock("Button", "FBTestBagButton")
+  function button:GetBagID() return 0 end
+  function button:GetID() return 2 end
+
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), "sell", "a white item goes on the sell list")
+  T.eq(ns.JunkRule(2), "sell")
+  T.truthy(printed[#printed]:find("Linen Cloth will be sold", 1, true), printed[#printed])
+
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), nil, "clicking again clears it")
+  T.eq(ns.JunkRule(2), nil)
+  T.truthy(printed[#printed]:find("follows the normal rules", 1, true), printed[#printed])
+end)
+
+T.run("on a grey, which would be sold anyway, the click protects it instead", function()
+  bags()
+  ns.db = { features = {} }
+  Stub.ctrl = true
+  local button = Stub.NewMock("Button", "FBTestBagButton")
+  function button:GetBagID() return 0 end
+  function button:GetID() return 1 end
+
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), "keep")
+  T.eq(ns.JunkRule(1), "keep")
+  T.truthy(printed[#printed]:find("Broken Fang will be kept", 1, true), printed[#printed])
+  Stub.calls = {}
+  T.eq((ns.SellJunk()), 2, "and the vendor pass leaves it alone")
+end)
+
+T.run("nothing happens without ctrl, on a left click, or with the feature off", function()
+  bags()
+  ns.db = { features = {} }
+  local button = Stub.NewMock("Button", "FBTestBagButton")
+  function button:GetBagID() return 0 end
+  function button:GetID() return 2 end
+
+  Stub.ctrl = false
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), nil, "ctrl is the whole point")
+  Stub.ctrl = true
+  T.eq(ns.OnBagModifiedClick(button, "LeftButton"), nil, "a left click is the game's own")
+  ns.db.features.selljunk = false
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), nil, "and nothing at all with selling off")
+  T.eq(ns.JunkRule(2), nil)
+  T.eq(#printed, 0, "no chat either")
+end)
+
+T.run("an item a vendor will not take says so rather than being listed", function()
+  bags()
+  ns.db = { features = {} }
+  Stub.ctrl = true
+  local button = Stub.NewMock("Button", "FBTestBagButton")
+  function button:GetBagID() return 0 end
+  function button:GetID() return 3 end -- Ruined Pelt, hasNoValue
+
+  T.eq(ns.OnBagModifiedClick(button, "RightButton"), nil)
+  T.eq(ns.JunkRule(3), nil)
+  T.truthy(printed[#printed]:find("no sell price", 1, true), printed[#printed])
+end)
+
+T.run("the lists survive a login that loses the saved file", function()
+  bags()
+  ns.db = { features = {} }
+  ns.SetJunkRule(2, "sell")
+  ns.SetJunkRule(1, "keep")
+  local text = ns.SettingsString()
+  T.truthy(text:find("k=1", 1, true), text)
+  T.truthy(text:find("j=2", 1, true), text)
+
+  ns.db = { features = {} } -- the beta client handing us an empty file
+  T.eq(ns.JunkRule(2), nil)
+  ns.RestoreSettingsFallback()
+  T.eq(ns.JunkRule(2), "sell")
+  T.eq(ns.JunkRule(1), "keep")
+end)
+
+T.run("the click is hooked onto whichever bag buttons this client has", function()
+  bags()
+  ns.db = { features = {} }
+  T.eq(ns.junkClicksHooked, true, "hooked when the file loaded")
+  Stub.ctrl = true
+  local button = Stub.NewMock("Button", "FBTestBagButton")
+  function button:GetBagID() return 0 end
+  function button:GetID() return 2 end
+  if ContainerFrameItemButtonMixin then
+    ContainerFrameItemButtonMixin.OnModifiedClick(button, "RightButton") -- Mainline and Forever
+  else
+    Stub.CallHook("ContainerFrameItemButton_OnModifiedClick", button, "RightButton") -- Classic
+  end
+  T.eq(ns.JunkRule(2), "sell", "a real click through the client's own path reaches us")
+end)
+
 T.finish()

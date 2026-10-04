@@ -1,5 +1,5 @@
 {
- "build": "1.60.1.69893",
+ "build": "1.60.1.70178",
  "spells": {
   "10": {
    "classes": [
@@ -1471,6 +1471,16 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "1014": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curseofsargeras",
+   "level": 18,
+   "name": "Bane of Agony",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "1020": {
    "classes": [
     "Paladin"
@@ -1518,6 +1528,16 @@
    "icon": "spell_holy_sealofsalvation",
    "level": 26,
    "name": "Blessing of Salvation",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "1042": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_holybolt",
+   "level": 30,
+   "name": "Holy Light",
    "rank": null,
    "requires": "Paladin"
   },
@@ -4070,6 +4090,16 @@
    "name": "Lightning Bolt",
    "rank": null,
    "requires": "Shaman"
+  },
+  "6057": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "inv_wand_01",
+   "level": null,
+   "name": "Wand Specialization",
+   "rank": null,
+   "requires": "Mage"
   },
   "6060": {
    "classes": [
@@ -8831,6 +8861,16 @@
    "rank": null,
    "requires": "Mage"
   },
+  "11094": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_fire_firearmor",
+   "level": 1,
+   "name": "Improved Fire Ward",
+   "rank": null,
+   "requires": "Mage"
+  },
   "11095": {
    "classes": [
     "Mage"
@@ -8888,6 +8928,16 @@
    "icon": "spell_nature_wispheal",
    "level": 1,
    "name": "Critical Mass",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11119": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_fire_incinerate",
+   "level": 1,
+   "name": "Ignite",
    "rank": null,
    "requires": "Mage"
   },
@@ -9038,6 +9088,86 @@
    "icon": "spell_holy_dispelmagic",
    "level": 1,
    "name": "Arcane Subtlety",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11213": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_manaburn",
+   "level": 1,
+   "name": "Arcane Concentration",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11222": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_holy_devotion",
+   "level": 1,
+   "name": "Arcane Focus",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11232": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_charm",
+   "level": 1,
+   "name": "Arcane Mind",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11237": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_starfall",
+   "level": 1,
+   "name": "Improved Channeling",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11242": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_wispsplode",
+   "level": 1,
+   "name": "Arcane Impact",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11247": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "inv_ability_mage_radiantspark",
+   "level": 1,
+   "name": "Arcane Geometry",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11252": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_detectlesserinvisibility",
+   "level": 1,
+   "name": "Arcane Shielding",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "11255": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_frost_iceshock",
+   "level": 1,
+   "name": "Improved Counterspell",
    "rank": null,
    "requires": "Mage"
   },
@@ -10001,6 +10131,146 @@
    "rank": null,
    "requires": "Mage"
   },
+  "12042": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 1,
+   "name": "Arcane Power",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "12043": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_enchantarmor",
+   "level": 1,
+   "name": "Presence of Mind",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "12051": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_purge",
+   "level": 20,
+   "name": "Evocation",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "12163": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_axe_09",
+   "level": 1,
+   "name": "Two-Handed Weapon Specialization",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12281": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_sword_27",
+   "level": 1,
+   "name": "Weaponmaster",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12282": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_rogue_ambush",
+   "level": 1,
+   "name": "Improved Heroic Strike",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12284": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_mace_01",
+   "level": 1,
+   "name": "Weaponmaster",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12285": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_charge",
+   "level": 1,
+   "name": "Improved Charge",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12286": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_gouge",
+   "level": 1,
+   "name": "Improved Rend",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12287": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_thunderclap",
+   "level": 1,
+   "name": "Improved Thunder Clap",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12288": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Improved Pummel",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12289": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_shockwave",
+   "level": 1,
+   "name": "Improved Hamstring",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12290": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_sword_05",
+   "level": 1,
+   "name": "Improved Overpower",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12292": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_rogue_slicedice",
+   "level": 30,
+   "name": "Sweeping Strikes",
+   "rank": null,
+   "requires": "Warrior"
+  },
   "12294": {
    "classes": [
     "Warrior"
@@ -10009,6 +10279,236 @@
    "level": 40,
    "name": "Mortal Strike",
    "rank": 1,
+   "requires": "Warrior"
+  },
+  "12295": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_enchantarmor",
+   "level": 1,
+   "name": "Improved Tactical Mastery",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12296": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_holy_blessingofstamina",
+   "level": 1,
+   "name": "Anger Management",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12297": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_mirrorimage",
+   "level": 1,
+   "name": "Anticipation",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12298": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12299": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_holy_devotion",
+   "level": 1,
+   "name": "Toughness",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12301": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_racial_bloodrage",
+   "level": 1,
+   "name": "Improved Bloodrage",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12302": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_reincarnation",
+   "level": 1,
+   "name": "Improved Taunt",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12307": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_defend",
+   "level": 1,
+   "name": "Improved Shield Block",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12308": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_sunder",
+   "level": 1,
+   "name": "Improved Sunder Armor",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12311": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_shieldbash",
+   "level": 1,
+   "name": "Improved Shield Bash",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12312": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_shieldwall",
+   "level": 1,
+   "name": "Improved Shield Wall",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12313": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_disarm",
+   "level": 1,
+   "name": "Improved Disarm",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12317": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_shadow_unholyfrenzy",
+   "level": 1,
+   "name": "Enrage",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12318": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_battleshout",
+   "level": 1,
+   "name": "Improved Battle Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12319": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_ghoulfrenzy",
+   "level": 1,
+   "name": "Flurry",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12320": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_rogue_eviscerate",
+   "level": 1,
+   "name": "Cruelty",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12321": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_purge",
+   "level": 1,
+   "name": "Booming Voice",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12322": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_stoneclawtotem",
+   "level": 1,
+   "name": "Unbridled Wrath",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12323": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_shadow_deathscream",
+   "level": 20,
+   "name": "Piercing Howl",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12324": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": 1,
+   "name": "Improved Demoralizing Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12327": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_challange",
+   "level": 1,
+   "name": "Improved Challenging Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12328": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_shadow_deathpact",
+   "level": 1,
+   "name": "Death Wish",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12329": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_cleave",
+   "level": 1,
+   "name": "Improved Cleave",
+   "rank": null,
    "requires": "Warrior"
   },
   "12355": {
@@ -10111,6 +10611,136 @@
    "rank": null,
    "requires": "Mage"
   },
+  "12536": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_manaburn",
+   "level": 10,
+   "name": "Clearcasting",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "12606": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_nature_abolishmagic",
+   "level": 1,
+   "name": "Magic Attunement",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "12695": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_charge",
+   "level": 1,
+   "name": "Charge Rage Bonus Effect",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12696": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_charge",
+   "level": 1,
+   "name": "Charge Rage Bonus Effect",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12700": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_axe_06",
+   "level": 1,
+   "name": "Weaponmaster",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12705": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_frost_stun",
+   "level": null,
+   "name": "Long Daze",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12707": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Improved Pummel",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12708": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Improved Pummel",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12723": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_rogue_slicedice",
+   "level": 1,
+   "name": "Sweeping Strikes",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12765": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_reincarnation",
+   "level": 1,
+   "name": "Improved Taunt",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12792": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 1,
+   "name": "Defiance",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12797": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_revenge",
+   "level": 1,
+   "name": "Improved Revenge",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12809": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_thunderbolt",
+   "level": 30,
+   "name": "Concussion Blow",
+   "rank": null,
+   "requires": "Warrior"
+  },
   "12824": {
    "classes": [
     "Mage"
@@ -10140,6 +10770,196 @@
    "name": "Polymorph",
    "rank": null,
    "requires": "Mage"
+  },
+  "12834": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_backstab",
+   "level": 1,
+   "name": "Deep Wounds",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12857": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_battleshout",
+   "level": 1,
+   "name": "Improved Battle Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12858": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_battleshout",
+   "level": 1,
+   "name": "Improved Battle Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12860": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_battleshout",
+   "level": 1,
+   "name": "Improved Battle Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12861": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_battleshout",
+   "level": 1,
+   "name": "Improved Battle Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12862": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_decisivestrike",
+   "level": 1,
+   "name": "Improved Slam",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12876": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": 1,
+   "name": "Improved Demoralizing Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12877": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": 1,
+   "name": "Improved Demoralizing Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12878": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": 1,
+   "name": "Improved Demoralizing Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12879": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": 1,
+   "name": "Improved Demoralizing Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12886": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_warrior_challange",
+   "level": 1,
+   "name": "Improved Challenging Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12944": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_defend",
+   "level": 1,
+   "name": "Improved Shield Block",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12945": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_defend",
+   "level": 1,
+   "name": "Improved Shield Block",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12962": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_magic_magearmor",
+   "level": 1,
+   "name": "Iron Will",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12963": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_sword_05",
+   "level": 1,
+   "name": "Improved Overpower",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12964": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_stoneclawtotem",
+   "level": 1,
+   "name": "Unbridled Wrath",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12966": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_ghoulfrenzy",
+   "level": 1,
+   "name": "Flurry",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12975": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_holy_ashestoashes",
+   "level": 1,
+   "name": "Last Stand",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "12976": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_holy_ashestoashes",
+   "level": 1,
+   "name": "Last Stand",
+   "rank": null,
+   "requires": "Warrior"
   },
   "13018": {
    "classes": [
@@ -10371,6 +11191,136 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "13705": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_marksmanship",
+   "level": null,
+   "name": "Precision",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13706": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_weapon_shortblade_05",
+   "level": 1,
+   "name": "Hack and Slash",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13707": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Fist Weapon Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13709": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_mace_01",
+   "level": 1,
+   "name": "Hack and Slash",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13712": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_nature_invisibilty",
+   "level": null,
+   "name": "Lightning Reflexes",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13713": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_parry",
+   "level": null,
+   "name": "Deflection",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13715": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_dualwield",
+   "level": null,
+   "name": "Dual Wield Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13732": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_ritualofsacrifice",
+   "level": null,
+   "name": "Improved Sinister Strike",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13741": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_gouge",
+   "level": null,
+   "name": "Improved Gouge",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13742": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_shadowward",
+   "level": null,
+   "name": "Endurance",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13743": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_sprint",
+   "level": null,
+   "name": "Improved Sprint",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13750": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_shadowworddominate",
+   "level": null,
+   "name": "Adrenaline Rush",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13754": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_kick",
+   "level": null,
+   "name": "Improved Kick",
+   "rank": null,
+   "requires": "Rogue"
+  },
   "13795": {
    "classes": [
     "Hunter"
@@ -10431,6 +11381,16 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "13877": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_warrior_punishingblow",
+   "level": 1,
+   "name": "Blade Flurry",
+   "rank": null,
+   "requires": "Rogue"
+  },
   "13896": {
    "classes": [
     "Priest"
@@ -10450,6 +11410,356 @@
    "name": "Desperate Prayer",
    "rank": null,
    "requires": "Priest"
+  },
+  "13958": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_charm",
+   "level": null,
+   "name": "Master of Deception",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13960": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_sword_27",
+   "level": 1,
+   "name": "Hack and Slash",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13966": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Fist Weapon Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13967": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Fist Weapon Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13968": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Fist Weapon Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13969": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_gauntlets_04",
+   "level": 1,
+   "name": "Fist Weapon Specialization",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13975": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_stealth",
+   "level": null,
+   "name": "Camouflage",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13976": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_fumble",
+   "level": null,
+   "name": "Initiative",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13977": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_fumble",
+   "level": null,
+   "name": "Initiative",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13981": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_magic_lesserinvisibilty",
+   "level": null,
+   "name": "Elusiveness",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "13983": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_nature_mirrorimage",
+   "level": null,
+   "name": "Setup",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14057": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_warrior_warcry",
+   "level": null,
+   "name": "Opportunity",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14076": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_sap",
+   "level": null,
+   "name": "Improved Sap",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14079": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_ambush",
+   "level": null,
+   "name": "Improved Ambush",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14082": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_summonsuccubus",
+   "level": null,
+   "name": "Dirty Deeds",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14093": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_vanish",
+   "level": null,
+   "name": "Vanished",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14094": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_sap",
+   "level": null,
+   "name": "Improved Sap",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14095": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_sap",
+   "level": null,
+   "name": "Improved Sap",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14113": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_poisons",
+   "level": null,
+   "name": "Improved Poisons",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14128": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_criticalstrike",
+   "level": null,
+   "name": "Lethality",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14138": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_racial_bloodrage",
+   "level": null,
+   "name": "Malice",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14144": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_fiegndead",
+   "level": null,
+   "name": "Remorseless Attacks",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14156": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_druid_disembowel",
+   "level": null,
+   "name": "Ruthlessness",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14158": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_deathscream",
+   "level": null,
+   "name": "Murder",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14162": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_eviscerate",
+   "level": null,
+   "name": "Improved Eviscerate",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14165": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_slicedice",
+   "level": null,
+   "name": "Improved Slice and Dice",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14168": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_warrior_riposte",
+   "level": null,
+   "name": "Improved Expose Armor",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14171": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_sword_17",
+   "level": null,
+   "name": "Serrated Blades",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14174": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_kidneyshot",
+   "level": null,
+   "name": "Improved Kidney Shot",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14177": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_ice_lament",
+   "level": null,
+   "name": "Cold Blood",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14179": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_warrior_decisivestrike",
+   "level": null,
+   "name": "Relentless Strikes",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14183": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_possession",
+   "level": 20,
+   "name": "Premeditation",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14185": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_antishadow",
+   "level": null,
+   "name": "Preparation",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14186": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_shadow_chilltouch",
+   "level": 1,
+   "name": "Seal Fate",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "14251": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_warrior_challange",
+   "level": null,
+   "name": "Riposte",
+   "rank": null,
+   "requires": "Rogue"
   },
   "14260": {
    "classes": [
@@ -10971,6 +12281,56 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "14520": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "ability_hibernation",
+   "level": null,
+   "name": "Mental Agility",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14521": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_sleep",
+   "level": null,
+   "name": "Meditation",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14522": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_magic_magearmor",
+   "level": null,
+   "name": "Unbreakable Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14523": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_manaregentotem",
+   "level": null,
+   "name": "Silent Resolve",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14524": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "inv_wand_01",
+   "level": null,
+   "name": "Wand Specialization",
+   "rank": null,
+   "requires": "Priest"
+  },
   "14531": {
    "classes": [
     "Priest"
@@ -10981,6 +12341,56 @@
    "rank": null,
    "requires": "Priest"
   },
+  "14747": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_innerfire",
+   "level": null,
+   "name": "Improved Inner Fire",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14748": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_powerwordshield",
+   "level": null,
+   "name": "Improved Power Word: Shield",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14749": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_wordfortitude",
+   "level": null,
+   "name": "Improved Power Word: Fortitude",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14750": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_shadow_manaburn",
+   "level": null,
+   "name": "Improved Mana Burn",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14751": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_frost_windwalkon",
+   "level": null,
+   "name": "Inner Focus",
+   "rank": null,
+   "requires": "Priest"
+  },
   "14752": {
    "classes": [
     "Priest"
@@ -10988,6 +12398,16 @@
    "icon": "spell_holy_divinespirit",
    "level": 30,
    "name": "Divine Spirit",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14767": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_wordfortitude",
+   "level": null,
+   "name": "Improved Power Word: Fortitude",
    "rank": null,
    "requires": "Priest"
   },
@@ -11008,6 +12428,86 @@
    "icon": "spell_holy_divinespirit",
    "level": 50,
    "name": "Divine Spirit",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14889": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_sealofsalvation",
+   "level": null,
+   "name": "Holy Specialization",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14892": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_layonhands",
+   "level": null,
+   "name": "Inspiration",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14898": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_moonglow",
+   "level": null,
+   "name": "Spiritual Healing",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14901": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_spiritualguidence",
+   "level": null,
+   "name": "Spiritual Guidance",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14908": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_renew",
+   "level": null,
+   "name": "Improved Renew",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14909": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_searinglightpriest",
+   "level": null,
+   "name": "Searing Light",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14912": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_heal02",
+   "level": null,
+   "name": "Improved Healing",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "14913": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_healingfocus",
+   "level": null,
+   "name": "Twilight Focus",
    "rank": null,
    "requires": "Priest"
   },
@@ -11080,6 +12580,26 @@
    "name": "Growl",
    "rank": null,
    "requires": "Hunter"
+  },
+  "14983": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_nature_earthbindtotem",
+   "level": null,
+   "name": "Vigor",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "15058": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_teleport",
+   "level": null,
+   "name": "Arcane Instability",
+   "rank": null,
+   "requires": "Mage"
   },
   "15107": {
    "classes": [
@@ -11451,6 +12971,106 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "16035": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_earthshock",
+   "level": null,
+   "name": "Concussion",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16038": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Call of Flame",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16039": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_wispsplode",
+   "level": null,
+   "name": "Convection",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16040": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_frostward",
+   "level": null,
+   "name": "Reverberation",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16043": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_stoneclawtotem",
+   "level": null,
+   "name": "Earth's Grasp",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16086": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_fire_sealoffire",
+   "level": null,
+   "name": "Improved Fire Nova",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16089": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_fire_volcano",
+   "level": null,
+   "name": "Elemental Fury",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16120": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_callstorm",
+   "level": null,
+   "name": "Call of Thunder",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16164": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_shadow_manaburn",
+   "level": 1,
+   "name": "Elemental Focus",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16173": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_moonglow",
+   "level": null,
+   "name": "Totemic Focus",
+   "rank": null,
+   "requires": "Shaman"
+  },
   "16176": {
    "classes": [
     "Shaman"
@@ -11471,6 +13091,96 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "16178": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_wizardmark",
+   "level": null,
+   "name": "Purification",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16179": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_manarecharge",
+   "level": null,
+   "name": "Tidal Focus",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16180": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_stun",
+   "level": null,
+   "name": "Nature's Guidance",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16181": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_healingwavelesser",
+   "level": null,
+   "name": "Healing Focus",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16182": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_magicimmunity",
+   "level": null,
+   "name": "Improved Healing Wave",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16184": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_reincarnation",
+   "level": null,
+   "name": "Improved Reincarnation",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16187": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_manaregentotem",
+   "level": null,
+   "name": "Restorative Totems",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16188": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_ravenform",
+   "level": 1,
+   "name": "Nature's Swiftness",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16189": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_nullward",
+   "level": 1,
+   "name": "Totemic Mastery",
+   "rank": null,
+   "requires": "Shaman"
+  },
   "16190": {
    "classes": [
     "Shaman"
@@ -11481,6 +13191,126 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "16194": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_tranquility",
+   "level": null,
+   "name": "Tidal Mastery",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16196": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_stun",
+   "level": null,
+   "name": "Nature's Guidance",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16198": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_frost_stun",
+   "level": null,
+   "name": "Nature's Guidance",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16252": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_holy_devotion",
+   "level": 1,
+   "name": "Toughness",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16253": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16254": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_mirrorimage",
+   "level": 1,
+   "name": "Anticipation",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16255": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "ability_thunderbolt",
+   "level": 1,
+   "name": "Thundering Strikes",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16256": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "ability_ghoulfrenzy",
+   "level": 1,
+   "name": "Flurry",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16258": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_stoneskintotem",
+   "level": null,
+   "name": "Guardian Totems",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16259": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_earthbindtotem",
+   "level": null,
+   "name": "Enhancing Totems",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16261": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightningshield",
+   "level": null,
+   "name": "Improved Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16262": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_spiritwolf",
+   "level": null,
+   "name": "Improved Ghost Wolf",
+   "rank": null,
+   "requires": "Shaman"
+  },
   "16266": {
    "classes": [
     "Shaman"
@@ -11488,6 +13318,76 @@
    "icon": "spell_fire_flametounge",
    "level": null,
    "name": "Elemental Weapons",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16268": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "ability_parry",
+   "level": 1,
+   "name": "Spirit Weapons",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16269": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_axe_10",
+   "level": null,
+   "name": "Two-Handed Axes and Maces",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16295": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_earthbindtotem",
+   "level": null,
+   "name": "Enhancing Totems",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16298": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16299": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16300": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16301": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
    "rank": null,
    "requires": "Shaman"
   },
@@ -11591,6 +13491,36 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "16462": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_parry",
+   "level": null,
+   "name": "Deflection",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "16487": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_shadow_summonimp",
+   "level": null,
+   "name": "Blood Craze",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "16493": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_searingarrow",
+   "level": null,
+   "name": "Impale",
+   "rank": null,
+   "requires": "Warrior"
+  },
   "16511": {
    "classes": [
     "Rogue"
@@ -11600,6 +13530,76 @@
    "name": "Hemorrhage",
    "rank": null,
    "requires": "Rogue"
+  },
+  "16513": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_feigndeath",
+   "level": null,
+   "name": "Vile Poisons",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "16538": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_shield_04",
+   "level": 1,
+   "name": "Bastion",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "16578": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_lightning_lightningbolt01",
+   "level": null,
+   "name": "Elemental Alacrity",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16579": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_lightning_lightningbolt01",
+   "level": null,
+   "name": "Lightning Mastery",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16580": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_lightning_lightningbolt01",
+   "level": null,
+   "name": "Lightning Mastery",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16581": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_lightning_lightningbolt01",
+   "level": null,
+   "name": "Lightning Mastery",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "16582": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_lightning_lightningbolt01",
+   "level": null,
+   "name": "Lightning Mastery",
+   "rank": null,
+   "requires": "Shaman"
   },
   "16689": {
    "classes": [
@@ -11620,6 +13620,16 @@
    "name": "Cower",
    "rank": null,
    "requires": "Hunter"
+  },
+  "16757": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_darkritual",
+   "level": null,
+   "name": "Arctic Reach",
+   "rank": null,
+   "requires": "Mage"
   },
   "16810": {
    "classes": [
@@ -11661,6 +13671,236 @@
    "rank": null,
    "requires": "Druid"
   },
+  "16814": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_abolishmagic",
+   "level": null,
+   "name": "Improved Wrath",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16819": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_naturetouchgrow",
+   "level": null,
+   "name": "Nature's Reach",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16821": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_starfall",
+   "level": null,
+   "name": "Improved Moonfire",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16833": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_wispsplode",
+   "level": null,
+   "name": "Natural Shapeshifter",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16836": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_thorns",
+   "level": null,
+   "name": "Improved Thorns",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16839": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_thorns",
+   "level": null,
+   "name": "Improved Thorns",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16840": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_thorns",
+   "level": null,
+   "name": "Improved Thorns",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16845": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_sentinal",
+   "level": null,
+   "name": "Moonglow",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16850": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_arcane_starfire",
+   "level": null,
+   "name": "Improved Starfire",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16858": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Feral Aggression",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16859": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Feral Aggression",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16860": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Feral Aggression",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16861": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Feral Aggression",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16862": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Feral Aggression",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16864": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_crystalball",
+   "level": 20,
+   "name": "Omen of Clarity",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16880": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_naturesblessing",
+   "level": null,
+   "name": "Nature's Grace",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16896": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_moonglow",
+   "level": null,
+   "name": "Moonfury",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16902": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_staff_01",
+   "level": null,
+   "name": "Natural Weapons",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16903": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_staff_01",
+   "level": null,
+   "name": "Natural Weapons",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16904": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_staff_01",
+   "level": null,
+   "name": "Natural Weapons",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16905": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_staff_01",
+   "level": null,
+   "name": "Natural Weapons",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16906": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_staff_01",
+   "level": null,
+   "name": "Natural Weapons",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16909": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_purge",
+   "level": null,
+   "name": "Vengeance",
+   "rank": null,
+   "requires": "Druid"
+  },
   "16914": {
    "classes": [
     "Druid"
@@ -11668,6 +13908,146 @@
    "icon": "spell_nature_cyclone",
    "level": 40,
    "name": "Hurricane",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16918": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_stranglevines",
+   "level": null,
+   "name": "Improved Entangling Roots",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16929": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_misc_pelt_bear_03",
+   "level": null,
+   "name": "Thick Hide",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16934": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_hunter_pet_hyena",
+   "level": null,
+   "name": "Ferocity",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16940": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_bash",
+   "level": null,
+   "name": "Brutal Impact",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16942": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_misc_monsterclaw_04",
+   "level": null,
+   "name": "Sharpened Claws",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16947": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_ambush",
+   "level": null,
+   "name": "Feral Instinct",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16958": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_ghoulfrenzy",
+   "level": null,
+   "name": "Blood Frenzy",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16966": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_shadow_vampiricaura",
+   "level": null,
+   "name": "Shredding Attacks",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16968": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_shadow_vampiricaura",
+   "level": null,
+   "name": "Improved Shred",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16972": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_hunter_pet_cat",
+   "level": null,
+   "name": "Predatory Strikes",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16979": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_hunter_pet_bear",
+   "level": 20,
+   "name": "Feral Charge (Bear)",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "16998": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_ravage",
+   "level": null,
+   "name": "Savage Fury",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17002": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_spiritwolf",
+   "level": null,
+   "name": "Feral Swiftness",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17003": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_holy_blessingofagility",
+   "level": null,
+   "name": "Heart of the Wild",
    "rank": null,
    "requires": "Druid"
   },
@@ -11681,6 +14061,116 @@
    "rank": null,
    "requires": "Druid"
   },
+  "17050": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_regeneration",
+   "level": null,
+   "name": "Improved Mark of the Wild",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17051": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_regeneration",
+   "level": null,
+   "name": "Improved Mark of the Wild",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17053": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_regeneration",
+   "level": null,
+   "name": "Improved Mark of the Wild",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17054": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_regeneration",
+   "level": null,
+   "name": "Improved Mark of the Wild",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17055": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_regeneration",
+   "level": null,
+   "name": "Improved Mark of the Wild",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17056": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_holy_blessingofstamina",
+   "level": null,
+   "name": "Furor",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17063": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_healingwavegreater",
+   "level": null,
+   "name": "Nature's Focus",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17069": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_healingtouch",
+   "level": null,
+   "name": "Naturalist",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17074": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_resistnature",
+   "level": null,
+   "name": "Improved Regrowth",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17079": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_enrage",
+   "level": null,
+   "name": "Improved Enrage",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17082": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_druid_enrage",
+   "level": null,
+   "name": "Improved Enrage",
+   "rank": null,
+   "requires": "Druid"
+  },
   "17104": {
    "classes": [
     "Druid"
@@ -11688,6 +14178,66 @@
    "icon": "spell_nature_protectionformnature",
    "level": null,
    "name": "Gift of Nature",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17106": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_frost_windwalkon",
+   "level": null,
+   "name": "Reflection",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17111": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_rejuvenation",
+   "level": null,
+   "name": "Improved Rejuvenation",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17116": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_ravenform",
+   "level": 1,
+   "name": "Nature's Swiftness",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17118": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "ability_eyeoftheowl",
+   "level": null,
+   "name": "Subtlety",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17123": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_tranquility",
+   "level": null,
+   "name": "Improved Tranquility",
+   "rank": null,
+   "requires": "Druid"
+  },
+  "17245": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_misc_herb_15",
+   "level": null,
+   "name": "Overgrowth",
    "rank": null,
    "requires": "Druid"
   },
@@ -11851,6 +14401,16 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "17364": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "ability_shaman_stormstrike",
+   "level": 40,
+   "name": "Stormstrike",
+   "rank": null,
+   "requires": "Shaman"
+  },
   "17401": {
    "classes": [
     "Druid"
@@ -11870,6 +14430,16 @@
    "name": "Hurricane",
    "rank": null,
    "requires": "Druid"
+  },
+  "17485": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Ancestral Knowledge",
+   "rank": null,
+   "requires": "Shaman"
   },
   "17727": {
    "classes": [
@@ -11891,6 +14461,116 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "17778": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_windsofwoe",
+   "level": null,
+   "name": "Cataclysm",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17783": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_fingerofdeath",
+   "level": null,
+   "name": "Fel Concentration",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17788": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_deathpact",
+   "level": null,
+   "name": "Bane",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17793": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_shadowbolt",
+   "level": null,
+   "name": "Improved Shadow Bolt",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17804": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_lifedrain02",
+   "level": null,
+   "name": "Soul Siphon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17810": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_abominationexplosion",
+   "level": null,
+   "name": "Improved Corruption",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17815": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Improved Immolate",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17833": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Improved Immolate",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17834": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Improved Immolate",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17835": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Improved Immolate",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17836": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_immolation",
+   "level": null,
+   "name": "Improved Immolate",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "17877": {
    "classes": [
     "Warlock"
@@ -11898,6 +14578,16 @@
    "icon": "spell_shadow_scourgebuild",
    "level": 20,
    "name": "Shadowburn",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17917": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_corpseexplode",
+   "level": null,
+   "name": "Destructive Reach",
    "rank": null,
    "requires": "Warlock"
   },
@@ -11981,6 +14671,16 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "17927": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_soulburn",
+   "level": null,
+   "name": "Agonizing Flames",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "17928": {
    "classes": [
     "Warlock"
@@ -12021,6 +14721,26 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "17954": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_selfdestruct",
+   "level": null,
+   "name": "Emberstorm",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "17959": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_shadowwordpain",
+   "level": null,
+   "name": "Ruin",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "17962": {
    "classes": [
     "Warlock"
@@ -12028,6 +14748,106 @@
    "icon": "spell_fire_fireball",
    "level": 40,
    "name": "Conflagrate",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18093": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_volcano",
+   "level": 35,
+   "name": "Pyroclasm",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18094": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_twilight",
+   "level": 1,
+   "name": "Nightfall",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18096": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_volcano",
+   "level": null,
+   "name": "Apocalypse",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18119": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_fire",
+   "level": null,
+   "name": "Aftermath",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18126": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_firebolt",
+   "level": null,
+   "name": "Improved Firebolt",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18127": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_firebolt",
+   "level": null,
+   "name": "Improved Firebolt",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18128": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curse",
+   "level": null,
+   "name": "Improved Lash of Pain",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18129": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curse",
+   "level": null,
+   "name": "Improved Lash of Pain",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18130": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_flameshock",
+   "level": null,
+   "name": "Devastation",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18135": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_fire_lavaspawn",
+   "level": null,
+   "name": "Intensity",
    "rank": null,
    "requires": "Warlock"
   },
@@ -12041,6 +14861,76 @@
    "rank": null,
    "requires": "Priest"
   },
+  "18174": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_unsummonbuilding",
+   "level": null,
+   "name": "Suppression",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18179": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curseofmannoroth",
+   "level": null,
+   "name": "Improved Curse of Weakness",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18180": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curseofmannoroth",
+   "level": null,
+   "name": "Improved Curse of Weakness",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18181": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curseofmannoroth",
+   "level": null,
+   "name": "Improved Curse of Weakness",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18182": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_burningspirit",
+   "level": null,
+   "name": "Improved Life Tap",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18218": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_callofbone",
+   "level": null,
+   "name": "Grim Reach",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18223": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Curse of Exhaustion",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "18265": {
    "classes": [
     "Warlock"
@@ -12051,6 +14941,96 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "18271": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_shadetruesight",
+   "level": null,
+   "name": "Shadow Mastery",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18288": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_contagion",
+   "level": null,
+   "name": "Amplify Curse",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18310": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Improved Curse of Exhaustion",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18311": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Improved Curse of Exhaustion",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18312": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Improved Curse of Exhaustion",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18313": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_grimward",
+   "level": null,
+   "name": "Improved Curse of Exhaustion",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18427": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_racial_avatar",
+   "level": null,
+   "name": "Aggression",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "18459": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_fire_flameshock",
+   "level": null,
+   "name": "Incineration",
+   "rank": null,
+   "requires": "Mage"
+  },
+  "18462": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_shadow_siphonmana",
+   "level": null,
+   "name": "Arcane Meditation",
+   "rank": null,
+   "requires": "Mage"
+  },
   "18499": {
    "classes": [
     "Warrior"
@@ -12060,6 +15040,16 @@
    "name": "Berserker Rage",
    "rank": null,
    "requires": "Warrior"
+  },
+  "18530": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_sealofwrath",
+   "level": null,
+   "name": "Divine Fury",
+   "rank": null,
+   "requires": "Priest"
   },
   "18540": {
    "classes": [
@@ -12080,6 +15070,76 @@
    "name": "Ritual of Doom Effect",
    "rank": null,
    "requires": "Warlock"
+  },
+  "18544": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_slowingtotem",
+   "level": null,
+   "name": "Force of Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18547": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_slowingtotem",
+   "level": null,
+   "name": "Force of Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18548": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_slowingtotem",
+   "level": null,
+   "name": "Force of Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18549": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_slowingtotem",
+   "level": null,
+   "name": "Force of Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18550": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_slowingtotem",
+   "level": null,
+   "name": "Force of Will",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18551": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_nature_enchantarmor",
+   "level": null,
+   "name": "Mental Strength",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "18562": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "inv_relics_idolofrejuvenation",
+   "level": 1,
+   "name": "Swiftmend",
+   "rank": null,
+   "requires": "Druid"
   },
   "18647": {
    "classes": [
@@ -12121,6 +15181,166 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "18692": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_stone_04",
+   "level": null,
+   "name": "Improved Healthstone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18693": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_stone_04",
+   "level": null,
+   "name": "Improved Healthstone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18694": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_summonimp",
+   "level": null,
+   "name": "Improved Imp",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18697": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_metamorphosis",
+   "level": null,
+   "name": "Demonic Embrace",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18703": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_lifedrain",
+   "level": null,
+   "name": "Improved Health Funnel",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18705": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_summonvoidwalker",
+   "level": null,
+   "name": "Improved Voidwalker",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18708": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_nature_removecurse",
+   "level": null,
+   "name": "Fel Domination",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18709": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_impphaseshift",
+   "level": null,
+   "name": "Master Summoner",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18731": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_demonictactics",
+   "level": null,
+   "name": "Fel Vitality",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18754": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "ability_warlock_randomizesuccubusincubus",
+   "level": null,
+   "name": "Improved Sayaad",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18767": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_ammo_firetar",
+   "level": null,
+   "name": "Improved Firestone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18768": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_ammo_firetar",
+   "level": null,
+   "name": "Improved Firestone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18769": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_shadowworddominate",
+   "level": null,
+   "name": "Unholy Power",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18774": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_misc_gem_sapphire_01",
+   "level": null,
+   "name": "Improved Spellstone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18775": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_misc_gem_sapphire_01",
+   "level": null,
+   "name": "Improved Spellstone",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18788": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_psychicscream",
+   "level": null,
+   "name": "Demonic Sacrifice",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "18807": {
    "classes": [
     "Priest"
@@ -12140,6 +15360,66 @@
    "name": "Pyroblast",
    "rank": null,
    "requires": "Mage"
+  },
+  "18821": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_enslavedemon",
+   "level": null,
+   "name": "Improved Subjugate Demon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18822": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_enslavedemon",
+   "level": null,
+   "name": "Improved Subjugate Demon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18823": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_enslavedemon",
+   "level": null,
+   "name": "Improved Subjugate Demon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18824": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_enslavedemon",
+   "level": null,
+   "name": "Improved Subjugate Demon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18825": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_enslavedemon",
+   "level": null,
+   "name": "Improved Subjugate Demon",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "18827": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_curseofsargeras",
+   "level": null,
+   "name": "Improved Bane of Agony",
+   "rank": null,
+   "requires": "Warlock"
   },
   "18867": {
    "classes": [
@@ -12261,6 +15541,16 @@
    "rank": null,
    "requires": "Druid"
   },
+  "19028": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "spell_shadow_gathershadows",
+   "level": 40,
+   "name": "Soul Link",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "19151": {
    "classes": [
     "Hunter"
@@ -12291,6 +15581,16 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "19159": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_racial_bloodrage",
+   "level": null,
+   "name": "Savage Strikes",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "19168": {
    "classes": [
     "Hunter"
@@ -12298,6 +15598,36 @@
    "icon": "spell_nature_invisibilty",
    "level": null,
    "name": "Lightning Reflexes",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19184": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_stranglevines",
+   "level": null,
+   "name": "Entrapment",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19185": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_stranglevines",
+   "level": null,
+   "name": "Entrapment",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19228": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_rogue_trip",
+   "level": null,
+   "name": "Improved Wing Clip",
    "rank": null,
    "requires": "Hunter"
   },
@@ -12320,6 +15650,16 @@
    "name": "Desperate Prayer",
    "rank": null,
    "requires": "Priest"
+  },
+  "19239": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_timestop",
+   "level": null,
+   "name": "Clever Traps",
+   "rank": null,
+   "requires": "Hunter"
   },
   "19240": {
    "classes": [
@@ -12411,6 +15751,16 @@
    "rank": null,
    "requires": "Priest"
   },
+  "19255": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_shadow_twilight",
+   "level": null,
+   "name": "Survivalist",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "19261": {
    "classes": [
     "Priest"
@@ -12430,6 +15780,16 @@
    "name": "Touch of Weakness",
    "rank": null,
    "requires": "Priest"
+  },
+  "19263": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_whirlwind",
+   "level": 20,
+   "name": "Deterrence",
+   "rank": null,
+   "requires": "Hunter"
   },
   "19264": {
    "classes": [
@@ -12601,6 +15961,26 @@
    "rank": null,
    "requires": "Priest"
   },
+  "19286": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_rogue_feigndeath",
+   "level": null,
+   "name": "Improved Feign Death",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19287": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_rogue_feigndeath",
+   "level": null,
+   "name": "Improved Feign Death",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "19290": {
    "classes": [
     "Hunter"
@@ -12608,6 +15988,16 @@
    "icon": "ability_kick",
    "level": null,
    "name": "Surefooted",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19295": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_parry",
+   "level": null,
+   "name": "Deflection",
    "rank": null,
    "requires": "Hunter"
   },
@@ -12731,6 +16121,16 @@
    "rank": null,
    "requires": "Priest"
   },
+  "19370": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_holy_blessingofstamina",
+   "level": null,
+   "name": "Killer Instinct",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "19376": {
    "classes": [
     "Hunter"
@@ -12738,6 +16138,186 @@
    "icon": "ability_ensnare",
    "level": null,
    "name": "Survival Tactics",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19381": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_axe_02",
+   "level": null,
+   "name": "Melee Specialization",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19382": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_axe_02",
+   "level": null,
+   "name": "Melee Specialization",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19383": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_axe_02",
+   "level": null,
+   "name": "Melee Specialization",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19384": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_axe_02",
+   "level": null,
+   "name": "Melee Specialization",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19385": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_axe_02",
+   "level": null,
+   "name": "Melee Specialization",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19407": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_frost_stun",
+   "level": null,
+   "name": "Improved Concussive Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19416": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_frost_wizardmark",
+   "level": null,
+   "name": "Efficiency",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19421": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_snipershot",
+   "level": null,
+   "name": "Improved Hunter's Mark",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19426": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_searingarrow",
+   "level": null,
+   "name": "Lethal Attacks",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19434": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 20,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19454": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_impalingbolt",
+   "level": null,
+   "name": "Improved Arcane Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19461": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_upgrademoonglaive",
+   "level": null,
+   "name": "Barrage",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19464": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_quickshot",
+   "level": null,
+   "name": "Improved Serpent Sting",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19485": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_piercedamage",
+   "level": null,
+   "name": "Mortal Shots",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19498": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_townwatch",
+   "level": null,
+   "name": "Hawk Eye",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19503": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_golemstormbolt",
+   "level": 30,
+   "name": "Scatter Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19506": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_trueshot",
+   "level": 40,
+   "name": "Trueshot Aura",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19507": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_weapon_rifle_06",
+   "level": null,
+   "name": "Ranged Weapon Specialization",
    "rank": null,
    "requires": "Hunter"
   },
@@ -12751,6 +16331,76 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "19552": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_ravenform",
+   "level": null,
+   "name": "Deadly Aspects",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19557": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_eyeoftheowl",
+   "level": null,
+   "name": "Improved Eyes of the Beast",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19558": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_eyeoftheowl",
+   "level": null,
+   "name": "Improved Eyes of the Beast",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19559": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_mount_jungletiger",
+   "level": null,
+   "name": "Pathfinding",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19572": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_mendpet",
+   "level": null,
+   "name": "Improved Mend Pet",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19574": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_druid_ferociousbite",
+   "level": 40,
+   "name": "Bestial Wrath",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19577": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_devour",
+   "level": 30,
+   "name": "Intimidation",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "19578": {
    "classes": [
     "Hunter"
@@ -12758,6 +16408,76 @@
    "icon": "ability_druid_demoralizingroar",
    "level": null,
    "name": "Spirit Bond",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19583": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_reincarnation",
+   "level": null,
+   "name": "Endurance Training",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19590": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "spell_nature_abolishmagic",
+   "level": null,
+   "name": "Bestial Discipline",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19596": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_druid_dash",
+   "level": null,
+   "name": "Bestial Swiftness",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19598": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_misc_monsterclaw_04",
+   "level": null,
+   "name": "Ferocity",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19609": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_misc_pelt_bear_03",
+   "level": null,
+   "name": "Thick Hide",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19616": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_bullrush",
+   "level": null,
+   "name": "Unleashed Fury",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "19621": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_misc_monsterclaw_03",
+   "level": null,
+   "name": "Frenzy",
    "rank": null,
    "requires": "Hunter"
   },
@@ -12910,6 +16630,26 @@
    "name": "Blessing of Wisdom",
    "rank": null,
    "requires": "Paladin"
+  },
+  "19870": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_golemthunderclap",
+   "level": null,
+   "name": "Improved Intimidating Shout",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "19871": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_golemthunderclap",
+   "level": null,
+   "name": "Improved Intimidating Shout",
+   "rank": null,
+   "requires": "Warrior"
   },
   "19876": {
    "classes": [
@@ -13201,6 +16941,16 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "20042": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_fistofjustice",
+   "level": null,
+   "name": "Improved Blessing of Might",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20043": {
    "classes": [
     "Hunter"
@@ -13211,6 +16961,66 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "20045": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_fistofjustice",
+   "level": null,
+   "name": "Improved Blessing of Might",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20046": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_fistofjustice",
+   "level": null,
+   "name": "Improved Blessing of Might",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20047": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_fistofjustice",
+   "level": null,
+   "name": "Improved Blessing of Might",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20048": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_fistofjustice",
+   "level": null,
+   "name": "Improved Blessing of Might",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20049": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_racial_avatar",
+   "level": null,
+   "name": "Vengeance",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20060": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_parry",
+   "level": null,
+   "name": "Deflection",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20066": {
    "classes": [
     "Paladin"
@@ -13218,6 +17028,26 @@
    "icon": "spell_holy_prayerofhealing",
    "level": 20,
    "name": "Repentance",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20091": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_auraoflight",
+   "level": null,
+   "name": "Improved Retribution Aura",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20092": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_auraoflight",
+   "level": null,
+   "name": "Improved Retribution Aura",
    "rank": null,
    "requires": "Paladin"
   },
@@ -13231,6 +17061,26 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "20101": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_frost_windwalkon",
+   "level": null,
+   "name": "Benediction",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20111": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_hammer_04",
+   "level": 1,
+   "name": "Two-Handed Weapon Specialization",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20116": {
    "classes": [
     "Paladin"
@@ -13238,6 +17088,76 @@
    "icon": "spell_holy_innerfire",
    "level": 30,
    "name": "Consecration",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20117": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_retributionaura",
+   "level": 1,
+   "name": "Conviction",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20127": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_defend",
+   "level": null,
+   "name": "Redoubt",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20138": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_devotionaura",
+   "level": null,
+   "name": "Improved Devotion Aura",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20143": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_devotion",
+   "level": 1,
+   "name": "Toughness",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20148": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20149": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20150": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_shield_06",
+   "level": 1,
+   "name": "Shield Specialization",
    "rank": null,
    "requires": "Paladin"
   },
@@ -13298,6 +17218,26 @@
    "icon": "spell_holy_righteousnessaura",
    "level": 38,
    "name": "Seal of Wisdom",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20174": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_sealofprotection",
+   "level": null,
+   "name": "Guardian's Favor",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20177": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_blessingofstrength",
+   "level": null,
+   "name": "Reckoning",
    "rank": null,
    "requires": "Paladin"
   },
@@ -13381,6 +17321,46 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "20196": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_sword_20",
+   "level": 1,
+   "name": "One-Handed Weapon Specialization",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20205": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_arcane_blink",
+   "level": null,
+   "name": "Spiritual Focus",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20210": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_greaterheal",
+   "level": null,
+   "name": "Illumination",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20216": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_heal",
+   "level": null,
+   "name": "Divine Favor",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20217": {
    "classes": [
     "Paladin"
@@ -13388,6 +17368,16 @@
    "icon": "spell_magic_magearmor",
    "level": 20,
    "name": "Blessing of Kings",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20224": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_thunderbolt",
+   "level": null,
+   "name": "Improved Seals",
    "rank": null,
    "requires": "Paladin"
   },
@@ -13400,6 +17390,66 @@
    "name": "Retaliation",
    "rank": null,
    "requires": "Warrior"
+  },
+  "20237": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_holybolt",
+   "level": null,
+   "name": "Healing Light",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20244": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_sealofwisdom",
+   "level": null,
+   "name": "Improved Blessing of Wisdom",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20245": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_sealofwisdom",
+   "level": null,
+   "name": "Improved Blessing of Wisdom",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20249": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_flashheal",
+   "level": null,
+   "name": "Improved Flash of Light",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20250": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_flashheal",
+   "level": null,
+   "name": "Improved Flash of Light",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20251": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_flashheal",
+   "level": null,
+   "name": "Improved Flash of Light",
+   "rank": null,
+   "requires": "Paladin"
   },
   "20252": {
    "classes": [
@@ -13418,6 +17468,26 @@
    "icon": "spell_holy_mindsooth",
    "level": null,
    "name": "Improved Concentration Aura",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20257": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_nature_sleep",
+   "level": null,
+   "name": "Divine Intellect",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20262": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_golemthunderclap",
+   "level": null,
+   "name": "Divine Strength",
    "rank": null,
    "requires": "Paladin"
   },
@@ -13651,6 +17721,36 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "20335": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_holysmite",
+   "level": null,
+   "name": "Improved Seal of the Crusader",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20336": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_holysmite",
+   "level": null,
+   "name": "Improved Seal of the Crusader",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20337": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_holysmite",
+   "level": null,
+   "name": "Improved Seal of the Crusader",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20344": {
    "classes": [
     "Paladin"
@@ -13781,6 +17881,16 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "20375": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 20,
+   "name": "Seal of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20411": {
    "classes": [
     "Paladin"
@@ -13861,6 +17971,46 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "20425": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 20,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20467": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 20,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20468": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_sealoffury",
+   "level": null,
+   "name": "Improved Righteous Fury",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20473": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_searinglight",
+   "level": 40,
+   "name": "Holy Shock",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "20484": {
    "classes": [
     "Druid"
@@ -13870,6 +18020,46 @@
    "name": "Rebirth",
    "rank": null,
    "requires": "Druid"
+  },
+  "20487": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_sealofmight",
+   "level": null,
+   "name": "Improved Hammer of Justice",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20500": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "spell_nature_ancestralguardian",
+   "level": null,
+   "name": "Improved Berserker Rage",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "20502": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "inv_sword_48",
+   "level": null,
+   "name": "Improved Execute",
+   "rank": null,
+   "requires": "Warrior"
+  },
+  "20504": {
+   "classes": [
+    "Warrior"
+   ],
+   "icon": "ability_rogue_sprint",
+   "level": null,
+   "name": "Improved Intercept",
+   "rank": null,
+   "requires": "Warrior"
   },
   "20559": {
    "classes": [
@@ -14000,6 +18190,16 @@
    "name": "Execute",
    "rank": 5,
    "requires": "Warrior"
+  },
+  "20711": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "inv_enchant_essenceeternallarge",
+   "level": null,
+   "name": "Spirit of Redemption",
+   "rank": null,
+   "requires": "Priest"
   },
   "20719": {
    "classes": [
@@ -14161,6 +18361,76 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "20900": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 28,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20901": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 36,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20902": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 44,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20903": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 52,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20904": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "inv_spear_07",
+   "level": 60,
+   "name": "Aimed Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20905": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_trueshot",
+   "level": 50,
+   "name": "Trueshot Aura",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "20906": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_trueshot",
+   "level": 60,
+   "name": "Trueshot Aura",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "20909": {
    "classes": [
     "Hunter"
@@ -14180,6 +18450,46 @@
    "name": "Counterattack",
    "rank": null,
    "requires": "Hunter"
+  },
+  "20915": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 30,
+   "name": "Seal of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20918": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 40,
+   "name": "Seal of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20919": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 50,
+   "name": "Seal of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20920": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 60,
+   "name": "Seal of Command",
+   "rank": null,
+   "requires": "Paladin"
   },
   "20922": {
    "classes": [
@@ -14208,6 +18518,136 @@
    "icon": "spell_holy_innerfire",
    "level": 60,
    "name": "Consecration",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20925": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_blessingofprotection",
+   "level": 40,
+   "name": "Holy Shield",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20927": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_blessingofprotection",
+   "level": 50,
+   "name": "Holy Shield",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20928": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_blessingofprotection",
+   "level": 60,
+   "name": "Holy Shield",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20929": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_searinglight",
+   "level": 48,
+   "name": "Holy Shock",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20930": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_searinglight",
+   "level": 56,
+   "name": "Holy Shock",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20961": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 40,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20962": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 30,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20963": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 30,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20964": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 40,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20965": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 50,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20966": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 60,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20967": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 50,
+   "name": "Judgement of Command",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "20968": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_warrior_innerrage",
+   "level": 60,
+   "name": "Judgement of Command",
    "rank": null,
    "requires": "Paladin"
   },
@@ -14731,6 +19171,36 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "24118": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_gouge",
+   "level": 30,
+   "name": "Lacerate",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "24119": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_gouge",
+   "level": 40,
+   "name": "Lacerate",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "24120": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_gouge",
+   "level": 50,
+   "name": "Lacerate",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "24239": {
    "classes": [
     "Paladin"
@@ -14788,6 +19258,16 @@
    "icon": "inv_misc_head_dragon_black",
    "level": null,
    "name": "Monster Slaying",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "24406": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_mendpet",
+   "level": 60,
+   "name": "Improved Mend Pet",
    "rank": null,
    "requires": "Hunter"
   },
@@ -15041,6 +19521,26 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "24529": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Spirit Bond",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "24530": {
+   "classes": [
+    "Mage"
+   ],
+   "icon": "spell_fire_fireball",
+   "level": 60,
+   "name": "Felfire",
+   "rank": null,
+   "requires": "Mage"
+  },
   "24545": {
    "classes": [
     "Hunter"
@@ -15270,6 +19770,36 @@
    "name": "Furious Howl",
    "rank": null,
    "requires": "Hunter"
+  },
+  "24607": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_pet_wolf",
+   "level": 40,
+   "name": "Furious Howl",
+   "rank": null,
+   "requires": null
+  },
+  "24608": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_pet_wolf",
+   "level": 24,
+   "name": "Furious Howl",
+   "rank": null,
+   "requires": null
+  },
+  "24609": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_pet_wolf",
+   "level": 10,
+   "name": "Furious Howl",
+   "rank": null,
+   "requires": null
   },
   "24631": {
    "classes": [
@@ -15951,6 +20481,76 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "26363": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 56,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26364": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 8,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26365": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 16,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26366": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 24,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26367": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 32,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26369": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 40,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "26370": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 48,
+   "name": "Lightning Shield",
+   "rank": null,
+   "requires": "Shaman"
+  },
   "26573": {
    "classes": [
     "Paladin"
@@ -16118,6 +20718,26 @@
    "icon": "spell_holy_summonlightwell",
    "level": 60,
    "name": "Lightwell",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "27873": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_summonlightwell",
+   "level": 50,
+   "name": "Lightwell Renew",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "27874": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_holy_summonlightwell",
+   "level": 60,
+   "name": "Lightwell Renew",
    "rank": null,
    "requires": "Priest"
   },
@@ -16371,6 +20991,16 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "29166": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_nature_lightning",
+   "level": 40,
+   "name": "Innervate",
+   "rank": null,
+   "requires": "Druid"
+  },
   "29187": {
    "classes": [
     "Shaman"
@@ -16481,6 +21111,56 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "30165": {
+   "classes": [
+    "Shaman"
+   ],
+   "icon": "spell_fire_elementaldevastation",
+   "level": null,
+   "name": "Elemental Devastation",
+   "rank": null,
+   "requires": "Shaman"
+  },
+  "30892": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_feint",
+   "level": null,
+   "name": "Sleight of Hand",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "30894": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_ambush",
+   "level": null,
+   "name": "Heightened Senses",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "30902": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_weapon_crossbow_11",
+   "level": null,
+   "name": "Deadliness",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "30919": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "spell_holy_blessingofstrength",
+   "level": null,
+   "name": "Weapon Expertise",
+   "rank": null,
+   "requires": "Rogue"
+  },
   "31016": {
    "classes": [
     "Rogue"
@@ -16550,6 +21230,24 @@
    "name": "Quick Draw",
    "rank": null,
    "requires": "Rogue"
+  },
+  "398603": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_09",
+   "level": null,
+   "name": "Runecarving",
+   "rank": null,
+   "requires": null
   },
   "399954": {
    "classes": [
@@ -16934,6 +21632,24 @@
    "name": "Rewind Time",
    "rank": null,
    "requires": "Mage"
+  },
+  "401488": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_pants_cloth_02",
+   "level": 1,
+   "name": "Engrave Pants - Cutty's Rune",
+   "rank": null,
+   "requires": "Rogue"
   },
   "401502": {
    "classes": [
@@ -18885,6 +23601,26 @@
    "rank": null,
    "requires": "Warlock"
   },
+  "412783": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Metamorphosis : Demon Charge",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "412784": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Metamorphosis : Demonic Howl",
+   "rank": null,
+   "requires": "Warlock"
+  },
   "412788": {
    "classes": [
     "Warlock"
@@ -19184,6 +23920,42 @@
    "name": "Aspect of the Viper",
    "rank": null,
    "requires": "Hunter"
+  },
+  "415449": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Waist Rune Ability",
+   "rank": null,
+   "requires": null
+  },
+  "415450": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Feet Rune Ability",
+   "rank": null,
+   "requires": null
   },
   "415918": {
    "classes": [
@@ -19674,6 +24446,78 @@
    "name": "Starsurge",
    "rank": null,
    "requires": "Druid"
+  },
+  "417345": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Helm Rune Ability",
+   "rank": null,
+   "requires": null
+  },
+  "417346": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Bracer Rune Ability",
+   "rank": null,
+   "requires": null
+  },
+  "417347": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Cloak Rune Ability",
+   "rank": null,
+   "requires": null
+  },
+  "417348": {
+   "classes": [
+    "Druid",
+    "Hunter",
+    "Mage",
+    "Paladin",
+    "Priest",
+    "Rogue",
+    "Shaman",
+    "Warlock",
+    "Warrior"
+   ],
+   "icon": "inv_misc_rune_06",
+   "level": 1,
+   "name": "Shoulder Rune Ability",
+   "rank": null,
+   "requires": null
   },
   "424035": {
    "classes": [
@@ -21365,6 +26209,16 @@
    "rank": null,
    "requires": "Shaman"
   },
+  "440658": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_paladin_shieldofvengeance",
+   "level": 1,
+   "name": "Shield of Righteousness",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "440677": {
    "classes": [
     "Paladin"
@@ -21434,6 +26288,16 @@
    "name": "Engrave Cloak - Frozen Orb",
    "rank": null,
    "requires": "Mage"
+  },
+  "440892": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "warlock_curse_shadow",
+   "level": 20,
+   "name": "Curse of the Elements",
+   "rank": null,
+   "requires": "Warlock"
   },
   "440922": {
    "classes": [
@@ -21831,6 +26695,16 @@
    "name": "Enchanted Flare",
    "rank": null,
    "requires": "Hunter"
+  },
+  "1224716": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_backstab",
+   "level": 1,
+   "name": "Puncturing Wounds",
+   "rank": null,
+   "requires": "Rogue"
   },
   "1225228": {
    "classes": [
@@ -23072,6 +27946,36 @@
    "rank": null,
    "requires": "Mage"
   },
+  "1299332": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_gouge",
+   "level": 60,
+   "name": "Lacerate",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "1299346": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_trueshot",
+   "level": 25,
+   "name": "Trueshot Aura",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "1299348": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_trueshot",
+   "level": 32,
+   "name": "Trueshot Aura",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "1299445": {
    "classes": [
     "Hunter"
@@ -23102,6 +28006,46 @@
    "rank": null,
    "requires": "Hunter"
   },
+  "1309595": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_shadow_demonicfortitude",
+   "level": 32,
+   "name": "Shadow Word: Death",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "1309633": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_shadow_demonicfortitude",
+   "level": 40,
+   "name": "Shadow Word: Death",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "1309635": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_shadow_demonicfortitude",
+   "level": 48,
+   "name": "Shadow Word: Death",
+   "rank": null,
+   "requires": "Priest"
+  },
+  "1309636": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "spell_shadow_demonicfortitude",
+   "level": 56,
+   "name": "Shadow Word: Death",
+   "rank": null,
+   "requires": "Priest"
+  },
   "1310185": {
    "classes": [
     "Warrior"
@@ -23121,6 +28065,26 @@
    "name": "Spearing Strike",
    "rank": null,
    "requires": "Warrior"
+  },
+  "1310617": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_hunter_aspectofthefox",
+   "level": 20,
+   "name": "Trickster's Dance",
+   "rank": null,
+   "requires": null
+  },
+  "1310687": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "hunter_pvp_snipershot",
+   "level": 40,
+   "name": "Sniper Shot",
+   "rank": null,
+   "requires": "Hunter"
   },
   "1310703": {
    "classes": [
@@ -23162,6 +28126,36 @@
    "rank": 1,
    "requires": "Rogue"
   },
+  "1310709": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "ability_rogue_dualweild",
+   "level": 30,
+   "name": "Coup de Grace",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "1310711": {
+   "classes": [
+    "Rogue"
+   ],
+   "icon": "inv_sword_35",
+   "level": null,
+   "name": "Flawless Execution",
+   "rank": null,
+   "requires": "Rogue"
+  },
+  "1310725": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "ability_druid_demoralizingroar",
+   "level": null,
+   "name": "Spirit Bond",
+   "rank": null,
+   "requires": "Hunter"
+  },
   "1310735": {
    "classes": [
     "Paladin"
@@ -23169,6 +28163,36 @@
    "icon": "spell_holy_blessedresillience",
    "level": null,
    "name": "Twist of Light",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "1310785": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "hunter_pvp_snipershot",
+   "level": 48,
+   "name": "Sniper Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "1310786": {
+   "classes": [
+    "Hunter"
+   ],
+   "icon": "hunter_pvp_snipershot",
+   "level": 58,
+   "name": "Sniper Shot",
+   "rank": null,
+   "requires": "Hunter"
+  },
+  "1310897": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "inv_misc_horn_03",
+   "level": 20,
+   "name": "Voice of Truth",
    "rank": null,
    "requires": "Paladin"
   },
@@ -23192,6 +28216,26 @@
    "rank": null,
    "requires": "Paladin"
   },
+  "1311015": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_paladin_shieldofthetemplar",
+   "level": 30,
+   "name": "Templar's Bulwark",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "1311074": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "ability_paladin_judgementblue",
+   "level": null,
+   "name": "Sanctified Judgement",
+   "rank": null,
+   "requires": "Paladin"
+  },
   "1311590": {
    "classes": [
     "Paladin"
@@ -23209,6 +28253,16 @@
    "icon": "ability_paladin_judgementofthepure",
    "level": 60,
    "name": "Light's Vigil",
+   "rank": null,
+   "requires": "Paladin"
+  },
+  "1311606": {
+   "classes": [
+    "Paladin"
+   ],
+   "icon": "spell_holy_searinglight",
+   "level": 30,
+   "name": "Holy Shock",
    "rank": null,
    "requires": "Paladin"
   },
@@ -23231,6 +28285,36 @@
    "name": "Seal of Fury",
    "rank": null,
    "requires": "Paladin"
+  },
+  "1311676": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "warlock_curse_shadow",
+   "level": 30,
+   "name": "Curse of the Elements",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "1311677": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "warlock_curse_shadow",
+   "level": 40,
+   "name": "Curse of the Elements",
+   "rank": null,
+   "requires": "Warlock"
+  },
+  "1311680": {
+   "classes": [
+    "Warlock"
+   ],
+   "icon": "warlock_curse_shadow",
+   "level": 50,
+   "name": "Curse of the Elements",
+   "rank": null,
+   "requires": "Warlock"
   },
   "1312002": {
    "classes": [
@@ -23392,6 +28476,16 @@
    "rank": null,
    "requires": "Priest"
   },
+  "1317006": {
+   "classes": [
+    "Priest"
+   ],
+   "icon": "inv_scroll_07",
+   "level": null,
+   "name": "Litany of Light",
+   "rank": null,
+   "requires": "Priest"
+  },
   "1317257": {
    "classes": [
     "Hunter"
@@ -23401,6 +28495,16 @@
    "name": "Strider Kick",
    "rank": null,
    "requires": "Hunter"
+  },
+  "1322605": {
+   "classes": [
+    "Druid"
+   ],
+   "icon": "spell_druid_displacement",
+   "level": 1,
+   "name": "Shifting Power",
+   "rank": null,
+   "requires": "Druid"
   }
  }
 }

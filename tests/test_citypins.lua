@@ -68,6 +68,28 @@ T.run("nothing is drawn away from a city, or with the feature off", function()
   T.eq(ns.UpdateCityPins(), nil, "and not while the map is closed")
 end)
 
+T.run("pins sit under the map's own quest icons, not over them", function()
+  world()
+  local canvas = WorldMapFrame.ScrollContainer.Child
+  function canvas:GetFrameLevel() return 4 end
+  function canvas:GetFrameStrata() return "FULLSCREEN" end
+  T.eq(ns.CityPinFrameLevel(canvas), 6, "a little above the map art")
+  T.eq(ns.CityPinFrameLevel(nil), 3, "and a sane answer on a client that will not say")
+
+  ns.UpdateCityPins() -- builds the pins
+  local seen = {}
+  for _, pin in ipairs(ns.CityPinFrames()) do
+    function pin:SetFrameLevel(level) table.insert(seen, level) end
+    function pin:SetFrameStrata(strata) self.strata = strata end
+  end
+  ns.UpdateCityPins()
+  T.eq(#seen, 6)
+  for _, level in ipairs(seen) do
+    T.truthy(level < 100, "below Blizzard's pins, which the map hands levels in the hundreds: " .. level)
+  end
+  T.eq(ns.CityPinFrames()[1].strata, "FULLSCREEN", "the canvas's own strata, not one raised above it")
+end)
+
 T.run("a class trainer wears its class icon and a profession its trade icon", function()
   world()
   _G.CLASS_ICON_TCOORDS = { HUNTER = { 0, 0.25, 0.25, 0.5 }, MAGE = { 0.25, 0.49, 0, 0.25 } }

@@ -3,7 +3,7 @@ local ADDON, ns = ...
 ns.RegisterFeature({
   key = "selljunk",
   name = "Sell junk",
-  desc = "Sells grey (poor quality) items automatically when you open a vendor. /fb junk keep [item] protects one, /fb junk sell [item] always sells one.",
+  desc = "Sells grey (poor quality) items automatically when you open a vendor. Ctrl + right click an item in your bags to add it to the list, or to protect a grey one.",
   default = true,
 })
 
@@ -20,6 +20,18 @@ local function Rules()
   ns.db.junk.keep = ns.db.junk.keep or {}
   ns.db.junk.sell = ns.db.junk.sell or {}
   return ns.db.junk
+end
+
+-- Lists an item as "keep" or "sell", or takes it off both with nil. Saved straight away: the
+-- beta client does not read our file back at login, so the settings fallback carries them.
+function ns.SetJunkRule(itemID, rule)
+  local rules = Rules()
+  if not (rules and itemID) then return nil end
+  rules.keep[itemID], rules.sell[itemID] = nil, nil
+  if rule == "keep" then rules.keep[itemID] = true
+  elseif rule == "sell" then rules.sell[itemID] = true end
+  ns.SaveSettingsFallback()
+  return rule
 end
 
 -- "keep", "sell", or nil for an item the player has listed.
@@ -110,11 +122,87 @@ ns.SlashHandlers.junk = function(rest)
   end
   local id = ParseItem(item)
   if (action == "keep" or action == "sell" or action == "clear") and id then
-    rules.keep[id] = nil; rules.sell[id] = nil
-    if action == "keep" then rules.keep[id] = true elseif action == "sell" then rules.sell[id] = true end
+    ns.SetJunkRule(id, action ~= "clear" and action or nil)
     local name = (C_Item.GetItemInfo(id)) or ("item " .. id)
     ns.Print(action == "keep" and (name .. " will never be sold") or action == "sell" and (name .. " will always be sold") or (name .. " follows the normal rules again"))
     return
   end
   ns.Print("usage: /fb junk keep|sell|clear <shift-click an item>, /fb junk list")
 end
+
+-- Ctrl + right click in your bags -------------------------------------------------
+-- Peddler's trick, and the thing people ask for most: flip what happens to an item at the
+-- next vendor without typing anything. A grey you want to keep goes on the keep list, anything
+-- else goes on the sell list, and a second click takes it off again.
+
+-- Returns the new rule ("keep", "sell" or nil), the item's name, and its id.
+function ns.ToggleJunkRule(bag, slot)
+  local info = C_Container.GetContainerItemInfo(bag, slot)
+  local itemID = info and info.itemID
+  if not itemID then return nil end
+  local name = (C_Item.GetItemInfo(itemID)) or ("item " .. itemID)
+  if ns.JunkRule(itemID) then
+    ns.SetJunkRule(itemID, nil)
+    return nil, name, itemID
+  end
+  local rule = (info.quality == Enum.ItemQuality.Poor) and "keep" or "sell"
+  ns.SetJunkRule(itemID, rule)
+  return rule, name, itemID
+end
+
+local function BagSlotOf(button)
+  if type(button) ~= "table" then return nil end
+  local bag = button.GetBagID and button:GetBagID()
+  if bag == nil and button.GetParent then
+    local parent = button:GetParent()
+    bag = parent and parent.GetID and parent:GetID()
+  end
+  local slot = button.GetID and button:GetID()
+  if type(bag) ~= "number" or type(slot) ~= "number" then return nil end
+  return bag, slot
+end
+
+function ns.OnBagModifiedClick(button, mouseButton)
+  if mouseButton ~= "RightButton" then return nil end
+  local ctrl = rawget(_G, "IsControlKeyDown")
+  if not (ctrl and ctrl()) then return nil end
+  if not ns.IsFeatureEnabled("selljunk") then return nil end
+  local bag, slot = BagSlotOf(button)
+  if not bag then return nil end
+
+  local info = C_Container.GetContainerItemInfo(bag, slot)
+  if not (info and info.itemID) then return nil end
+  -- Nothing to list: a vendor will not take something with no sell price.
+  if info.hasNoValue and not ns.JunkRule(info.itemID) then
+    ns.Print(((C_Item.GetItemInfo(info.itemID)) or "that") .. " has no sell price, so a vendor will not take it.")
+    return nil
+  end
+
+  local rule, name = ns.ToggleJunkRule(bag, slot)
+  if not name then return nil end
+  if rule == "sell" then
+    ns.Print(name .. " will be sold at the next vendor. Ctrl + right click it again to stop.")
+  elseif rule == "keep" then
+    ns.Print(name .. " will be kept, not sold with your greys. Ctrl + right click it again to stop.")
+  else
+    ns.Print(name .. " follows the normal rules again.")
+  end
+  return rule
+end
+
+-- Hooked rather than replaced, so whatever the client does with a modified click still happens.
+function ns.HookBagJunkClicks()
+  if ns.junkClicksHooked then return false end
+  local mixin = rawget(_G, "ContainerFrameItemButtonMixin")
+  if type(mixin) == "table" and mixin.OnModifiedClick then
+    hooksecurefunc(mixin, "OnModifiedClick", ns.OnBagModifiedClick) -- Mainline and Forever
+  elseif rawget(_G, "ContainerFrameItemButton_OnModifiedClick") then
+    hooksecurefunc("ContainerFrameItemButton_OnModifiedClick", ns.OnBagModifiedClick) -- Classic
+  else
+    return false
+  end
+  ns.junkClicksHooked = true
+  return true
+end
+
+ns.HookBagJunkClicks()

@@ -15,54 +15,49 @@
   <img src="https://img.shields.io/badge/Discord-Leemo-5865F2?logo=discord&logoColor=white" alt="Discord: Leemo">
 </p>
 
-It answers the questions you would otherwise alt-tab for: what is this item for, where do I get
-this dungeon quest, where should I level next, and what does my class learn at the trainer.
+It answers the questions you would otherwise alt-tab for: where should I level next, what does
+my class learn at the trainer, what do I actually have to go and buy to craft this, and what is
+this item for.
 
-![The dungeon journal](docs/images/dungeons.jpg)
+![Where to level](docs/images/world-map.jpg)
 
 ## What it does
 
-**Dungeon journal.** Every quest tied to a dungeon: who gives it, where they stand, whether the
-group can share it, and the chain that comes before it. Click a step for an arrow to it. Quests
-for one side wear that side's emblem, the whole length of a chain.
+**Where to level.** Pick a level band on the left, see where to quest and which dungeon to run on
+the right, coloured the way the game colours quest difficulty: yellow is the one to do now, grey
+is long behind you. Zones that belong to one side wear that side's emblem. 42 zones.
 
-**Abilities.** What your class can train right now, and every level above you to 60, with the
-price a trainer charges once somebody has recorded one. Level data for abilities is based on the
-WoW: Forever client, as they sometimes differ from Classic: a paladin gets Hammer of Justice at
-8 here, not 20.
+**Abilities.** Every ability your class learns, level 1 to 60, searchable by name — type "kidney
+shot" and it tells you the level. Talents are marked as talents, so you do not go looking for
+Trueshot Aura at a trainer. Where somebody has recorded a trainer's list, it knows the price.
+1,424 abilities across 9 classes, from the Forever client itself, which differs from Classic: a
+paladin gets Hammer of Justice at 8 here, not 20.
 
-**Where to level.** Every zone by level, with the ranges written over the continent map, and one
-click to light a zone up on it.
+**Professions.** Open any profession, pick what you want to make and press **Shopping list**. It
+breaks the recipe down to the things nobody can craft, counts what is already in your bags and
+bank, and tells you what to go and get. The quantity is presses of Create, the same as Blizzard's
+own box, so 2 of a recipe that makes 200 is 2 presses. 2,329 recipes across all 13 professions.
 
 **City maps.** Class trainers, profession trainers, weapon masters, the bank, the auction house
-and the flight master, each its own switch, each class and profession its own tick.
+and the flight master, each its own switch, each class and profession its own tick. Our pins stay
+under Blizzard's `!` and `?` rather than over them.
 
 **Tooltips.** Which quests and recipes need an item, coloured by how far through those quests you
 are, and whether it is safe to vendor.
 
-**At the vendor.** Repairs your gear and sells your greys. Quests can accept and hand in
-themselves, and Shift does it by hand.
+**At the vendor.** Repairs your gear and sells your greys. Ctrl + right click anything in your
+bags to add it to the sell list, or to protect a grey you want to keep. Quests can accept and
+hand in themselves, and Shift does it by hand.
 
-`/fb` opens the window. `/fb dungeon`, `/fb zones`, `/fb abilities` and `/fb settings` go
-straight to a page.
+`/fb` opens the window, and so does the minimap button; right click that for the settings.
+`/fb zones`, `/fb abilities` and `/fb settings` go straight to a page. `/fb craft <item> [n]`
+prints a shopping list into chat without opening anything.
 
 ## What it looks like
-
-A dungeon's chains, with where each step is picked up and a tick on what you have finished:
-
-![A dungeon's quest chains](docs/images/chain.jpg)
-
-Every ability your class trains, with what a trainer charges where somebody has recorded one:
-
-![The abilities screen](docs/images/abilities.jpg)
 
 A capital, with each kind of trainer its own switch and each class and profession its own tick:
 
 ![City trainers on the map](docs/images/city-map.jpg)
-
-Level ranges written over every zone of a continent:
-
-![Zone levels on the world map](docs/images/world-map.jpg)
 
 ## Installing
 

@@ -7,6 +7,11 @@ local BANNED = {
   { "%f[%w]goto%f[%W]", "goto, which Lua 5.1 has no idea about" },
   { "::%a[%w_]*::", "a goto label" },
   { "%d%s*//%s*%d", "the 5.3 integer division operator" },
+  -- "cond and unpack(a) or unpack(b)" hands the caller one value instead of three, so
+  -- SetTextColor gets a red and no green or blue and throws. The fake client shrugs at it and
+  -- the game does not, which is exactly the kind of thing a lint is for.
+  { "[%s(]and%s+unpack%(", "unpack inside a conditional, which keeps only its first value" },
+  { "[%s(]or%s+unpack%(", "unpack inside a conditional, which keeps only its first value" },
 }
 
 local function files()

@@ -6,6 +6,8 @@ local _, ns = ...
 
 ns.Dungeons = ns.Dungeons or {}
 
+-- "unknown" has no text of its own: a quest nobody has tried to share says nothing rather than
+-- claiming it cannot be. The client answers for itself once the quest is in your log.
 ns.SHARE_TEXT = { yes = "Shareable", chain = "Not shareable (chain)", single = "Not shareable" }
 
 local CLASS_NAMES = {
@@ -46,7 +48,10 @@ function ns.QuestShareText(q)
     local observed = ns.Observed and ns.Observed.quests and ns.Observed.quests[q.id]
     if observed and type(observed.shareable) == "boolean" then shareable = observed.shareable end
   end
-  if shareable == nil then return ns.SHARE_TEXT[q.share] or ns.SHARE_TEXT.single end
+  if shareable == nil then
+    if q.share == "unknown" then return nil end
+    return ns.SHARE_TEXT[q.share] or ns.SHARE_TEXT.single
+  end
   if shareable then return ns.SHARE_TEXT.yes end
   return q.share == "chain" and ns.SHARE_TEXT.chain or ns.SHARE_TEXT.single
 end
@@ -73,8 +78,15 @@ function ns.FindDungeon(text)
   return nil
 end
 
+-- How far a level is from a dungeon's band. A dungeon Forever has built but not tuned has no
+-- band at all, so it is never "the one for your level": it answers a huge distance and only
+-- turns up when somebody asks for it by name.
+local UNTUNED = 10000
+
 local function distance(d, level)
-  local lo, hi = d.level[1], d.level[2]
+  local lo, hi = ns.DungeonLevels(d)
+  if not lo then return UNTUNED end
+  hi = hi or lo
   return (level < lo and lo - level) or (level > hi and level - hi) or 0
 end
 
@@ -88,7 +100,8 @@ function ns.DungeonForLevel(level, faction)
   for _, d in ipairs(ns.Dungeons) do
     if open_to(d, faction) then
       local dist = distance(d, level)
-      local centre = math.abs((d.level[1] + d.level[2]) / 2 - level)
+      local lo, hi = ns.DungeonLevels(d)
+      local centre = lo and math.abs((lo + (hi or lo)) / 2 - level) or UNTUNED
       if not best or dist < bestDist or (dist == bestDist and centre < bestCentre) then
         best, bestDist, bestCentre = d, dist, centre
       end
@@ -188,7 +201,15 @@ function ns.DungeonRowClicked(row)
   return title
 end
 
-ns.SlashHandlers.dungeon = function(rest)
+-- /fb dungeon opens the shelved journal, so it is shelved with it. Everything above this line
+-- stays: the levelling screen asks DungeonsForLevel which dungeon fits, and the arrow is used
+-- by anything that wants to point at an NPC. ns.RegisterDungeonCommand() brings it back.
+function ns.RegisterDungeonCommand()
+  ns.SlashHandlers.dungeon = ns.DungeonCommand
+  return ns.SlashHandlers.dungeon
+end
+
+ns.DungeonCommand = function(rest)
   rest = (rest or ""):match("^%s*(.-)%s*$")
   local faction, level = UnitFactionGroup("player"), UnitLevel("player")
   if rest == "list" then
@@ -201,7 +222,8 @@ ns.SlashHandlers.dungeon = function(rest)
     for _, d in ipairs(list) do
       local mine = 0
       for _, q in ipairs(d.quests) do if ns.CanTakeQuest(q) then mine = mine + 1 end end
-      ns.Print(("  %s %d-%d, %d quests you can take (/fb dungeon %s)"):format(d.name, d.level[1], d.level[2], mine, d.aliases[1] or d.key))
+      ns.Print(("  %s %s, %d quests you can take (/fb dungeon %s)"):format(
+        d.name, ns.DungeonLevelText(d, "bare"), mine, d.aliases[1] or d.key))
     end
     return
   end
@@ -217,3 +239,5 @@ ns.SlashHandlers.dungeon = function(rest)
   end
   ns.ShowWindow("journal", d)
 end
+
+if ns.JournalShipping then ns.RegisterDungeonCommand() end

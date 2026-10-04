@@ -4,6 +4,10 @@ local Stub = require("wow_stub")
 
 local FILES = { "Core.lua", "UsedFor/QuestStatus.lua", "Nav/Arrow.lua", "UI/Window.lua", "UI/Home.lua", "UI/Journal.lua", "UI/Settings.lua", "Dungeons/Guide.lua", "Dungeons/Zones.lua" }
 local ns = Stub.LoadAddon(FILES)
+-- Shelved for now, so the tests register the screen and the command themselves: the code is
+-- meant to keep working while it waits for the quest data to catch up.
+ns.RegisterJournalScreen()
+ns.RegisterDungeonCommand()
 local printed = {}
 ns.Print = function(msg) table.insert(printed, msg) end
 
@@ -39,8 +43,8 @@ local function fixtures()
   ns.Zones = {
     { zone = 14, name = "Durotar", continent = "Kalimdor", level = { 4, 12 }, quests = 40, faction = "Horde" },
     { zone = 12, name = "Elwynn Forest", continent = "Eastern Kingdoms", level = { 5, 10 }, quests = 46, faction = "Alliance" },
-    { zone = 17, name = "The Barrens", continent = "Kalimdor", level = { 10, 22 }, quests = 96, faction = "Horde" },
-    { zone = 406, name = "Stonetalon Mountains", continent = "Kalimdor", level = { 18, 26 }, quests = 46, faction = false },
+    { zone = 17, name = "The Barrens", continent = "Kalimdor", level = { 10, 22 }, quests = 96, faction = "Horde", leaning = false, alliance = 3, horde = 76 },
+    { zone = 406, name = "Stonetalon Mountains", continent = "Kalimdor", level = { 18, 26 }, quests = 46, faction = "Horde", leaning = true, alliance = 17, horde = 23 },
     { zone = 331, name = "Ashenvale", continent = "Kalimdor", level = { 20, 30 }, quests = 70, faction = "Alliance" },
     { zone = 267, name = "Hillsbrad Foothills", continent = "Eastern Kingdoms", level = { 24, 37 }, quests = 53, faction = "Horde" },
   }
@@ -218,7 +222,7 @@ T.run("ZonesForLevel: inside the band first, most levels ahead next, faction res
   list = ns.ZonesForLevel(22, "Alliance")
   T.eq(list[1].zone.name, "Ashenvale", "8 levels ahead beats Stonetalon's 4")
   T.eq(list[2].zone.name, "Stonetalon Mountains")
-  T.eq(ns.ZoneLine(list[2]), "Stonetalon Mountains 18-26, 46 quests, both factions")
+  T.eq(ns.ZoneLine(list[2]), "Stonetalon Mountains 18-26, 46 quests, mostly Horde (17 Alliance, 23 Horde)")
   list = ns.ZonesForLevel(16, "Horde")
   T.eq(list[1].zone.name, "The Barrens"); T.eq(list[2].zone.name, "Stonetalon Mountains"); T.eq(list[2].fit, 2)
 end)
@@ -227,8 +231,8 @@ T.run("/fb zones prints for the character's level or a given one, and rejects ba
   fresh(11, "Horde")
   SlashCmdList.FOREVERBUDDY("zones")
   T.eq(printed[1], "Zones for level 11 (Horde):")
-  T.eq(printed[2], "  The Barrens 10-22, 96 quests")
-  T.eq(printed[3], "  Durotar 4-12, 40 quests")
+  T.eq(printed[2], "  The Barrens 10-22, 96 quests, Horde")
+  T.eq(printed[3], "  Durotar 4-12, 40 quests, Horde")
   T.eq(printed[4], nil)
   printed = {}
   SlashCmdList.FOREVERBUDDY("zones 20")
@@ -460,6 +464,70 @@ T.run("a step wears its own side, even with no quest of its own", function()
   local colour = ns.NodeNameColor({ faction = "Horde" }, "available")
   T.eq(colour, ns.COLORS.horde)
   ns.HideWindow()
+end)
+
+T.run("a dungeon Forever has not tuned shows as unknown rather than inventing a range", function()
+  fresh(15)
+  ns.Dungeons = {
+    { key = "rfc", name = "Ragefire Chasm", zone = 1, level = { 13, 18 }, faction = false, aliases = { "rfc" }, quests = {} },
+    { key = "dalaran", name = "City of Dalaran", zone = 2, level = { 28, 0 }, faction = false, aliases = { "cod" }, quests = {} },
+    { key = "crypts", name = "Karazhan Crypts", zone = 3, level = false, faction = false, aliases = { "crypts" }, quests = {} },
+  }
+  local rfc, dalaran, crypts = ns.Dungeons[1], ns.Dungeons[2], ns.Dungeons[3]
+
+  local lo, hi = ns.DungeonLevels(rfc)
+  T.eq(lo, 13); T.eq(hi, 18)
+  lo, hi = ns.DungeonLevels(dalaran)
+  T.eq(lo, 28); T.eq(hi, nil, "a floor with no ceiling")
+  lo, hi = ns.DungeonLevels(crypts)
+  T.eq(lo, nil); T.eq(hi, nil)
+
+  T.eq(ns.DungeonLevelText(rfc), "LV 13-18")
+  T.eq(ns.DungeonLevelText(dalaran), "LV 28+")
+  T.eq(ns.DungeonLevelText(crypts), "LV ?")
+  T.eq(ns.DungeonLevelText(crypts, "long"), "Level not set yet")
+  T.eq(ns.DungeonLevelText(dalaran, "long"), "Level 28 and up")
+  T.eq(ns.DungeonLevelText(rfc, "bare"), "13-18")
+
+  -- and it is never the answer to "where should I go at this level"
+  T.eq(ns.DungeonForLevel(60, nil).key, "dalaran", "the tuned one, even far above its floor")
+  T.eq(#ns.DungeonsForLevel(15, nil), 1)
+  T.eq(ns.DungeonsForLevel(15, nil)[1].key, "rfc")
+end)
+
+T.run("a zone that only leans one way stays on both sides' lists, and says so", function()
+  fresh(20, "Alliance")
+  local names = {}
+  for _, entry in ipairs(ns.ZonesForLevel(20, "Alliance")) do names[entry.zone.name] = true end
+  T.eq(names["Stonetalon Mountains"], true, "mostly Horde, but 17 Alliance quests are still 17")
+  T.eq(names["The Barrens"], nil, "wholly Horde, so not on an Alliance list")
+
+  local stonetalon
+  for _, z in ipairs(ns.Zones) do if z.name == "Stonetalon Mountains" then stonetalon = z end end
+  T.eq(ns.ZoneLine({ zone = stonetalon }),
+    "Stonetalon Mountains 18-26, 46 quests, mostly Horde (17 Alliance, 23 Horde)")
+end)
+
+T.run("a quest nobody has tried to share says nothing, rather than that it cannot be", function()
+  fresh(25, "Horde")
+  T.eq(ns.QuestShareText({ id = 95697, share = "unknown" }), nil)
+  T.eq(ns.QuestShareText({ id = 95697, share = "single" }), "Not shareable")
+  T.eq(ns.QuestShareText({ id = 95697, share = "yes" }), "Shareable")
+end)
+
+T.run("one quest is not enough to fly a side's emblem over a dungeon", function()
+  fresh(25, "Horde")
+  local lonely = { key = "esw", name = "Excavation Site: Wetlands", zone = 1, level = { 26, 33 },
+                   faction = false, aliases = { "esw" },
+                   quests = { { id = 95697, name = "Changing Tastes", faction = "Horde" } } }
+  T.eq(ns.DungeonFaction(lonely), nil, "one Horde quest in Wetlands proves nothing")
+  table.insert(lonely.quests, { id = 2, name = "Another", faction = "Horde" })
+  T.eq(ns.DungeonFaction(lonely), "Horde", "two of a side, and it is theirs")
+
+  local entrance = { key = "hot", name = "The Hall of Thanes", zone = 2, level = { 13, 20 },
+                     faction = "Alliance", aliases = { "hot" },
+                     quests = { { id = 3, name = "One", faction = "Alliance" } } }
+  T.eq(ns.DungeonFaction(entrance), "Alliance", "the city holding the entrance still stands in")
 end)
 
 T.finish()

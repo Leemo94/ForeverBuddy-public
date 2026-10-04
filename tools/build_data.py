@@ -78,6 +78,7 @@ SPECIAL_REPEATABLE = 1
 
 _NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
 _WORD = re.compile(r"nil|true|false")
+_IDENTIFIER = re.compile(r"([A-Za-z_][A-Za-z0-9_]*)\s*=\s*")
 _ENTRY = re.compile(r"^\[(\d+)\] = ", re.M)
 
 
@@ -108,8 +109,15 @@ def parse_lua_value(s, i):
                 value, i = parse_lua_value(s, i)
                 keyed[key] = value
             else:
-                value, i = parse_lua_value(s, i)
-                items.append(value)
+                # A bare key, as the generated data files write them: { key = "rfc", level = 13 }.
+                m = _IDENTIFIER.match(s, i)
+                if m:
+                    i = m.end()
+                    value, i = parse_lua_value(s, i)
+                    keyed[m.group(1)] = value
+                else:
+                    value, i = parse_lua_value(s, i)
+                    items.append(value)
     if c in "'\"":
         j = i + 1
         out = []

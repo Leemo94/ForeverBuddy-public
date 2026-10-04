@@ -3,16 +3,13 @@ local ADDON, ns = ...
 -- The welcome page: what each icon down the left does, in the order they sit there.
 
 local SECTIONS = {
-  {
-    screen = "journal",
-    title = "Dungeon Journal",
-    body = "Get every quest before you enter a dungeon.",
-    icon = "Interface\\LFGFrame\\LFGIcon-Dungeon",
-  },
+  -- The Dungeon Journal's section is shelved with the screen itself; "Where to level" is
+  -- growing to answer the same question, and will say which dungeon to run as well as where
+  -- to quest.
   {
     screen = "zones",
     title = "Where to level",
-    body = "See zones by level, including on the world map.",
+    body = "Where to quest at your level, and which dungeon to run.",
     icon = "Interface\\Icons\\INV_Misc_Map_01",
   },
   {
@@ -20,6 +17,14 @@ local SECTIONS = {
     title = "Abilities",
     body = "See what level you learn class abilities at the trainer.",
     icon = "Interface\\Icons\\INV_Misc_Book_09",
+  },
+  -- No screen of its own: the shopping list lives on Blizzard's profession window, next to the
+  -- recipe you picked, so there is nothing here to open.
+  {
+    title = "Professions",
+    body = "Open a profession, pick what to make and press Shopping list: it breaks the recipe\n"
+      .. "down to base materials and counts what is already in your bags and bank.",
+    icon = "Interface\\Minimap\\Tracking\\Profession",
   },
   {
     title = "City map improvements",
@@ -91,8 +96,6 @@ local function Build(page)
   page.made:SetPoint("LEFT", page.madeIcon, "RIGHT", 4, 0)
   page.made:SetText("Made by Leemo")
 
-  page.footer = page:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
-  page.footer:SetPoint("BOTTOMLEFT", page, "BOTTOMLEFT", 6, 8)
   return page
 end
 
@@ -105,19 +108,12 @@ local function Refresh(page)
   else
     page.version:SetText(("Version %s. Everything here is a switch: the cog on the left turns anything off."):format(version))
   end
-  local dungeons, quests = #(ns.Dungeons or {}), 0
-  for _, d in ipairs(ns.Dungeons or {}) do quests = quests + #d.quests end
-  local abilities = (ns.AbilityInfo and ns.AbilityInfo.abilities) or 0
-  -- What is loaded, not what you have recorded: nobody opening this wants a tally of themselves.
-  local text = ("%d dungeons, %d dungeon quests and %d class abilities loaded."):format(dungeons, quests, abilities)
-  page.footer:SetText(text)
-  return text
 end
 
 ns.RegisterScreen({
   key = "home",
   name = "Welcome",
-  icon = "Interface\\GossipFrame\\AvailableQuestIcon",
+  icon = ns.LOGO,
   build = Build,
   refresh = Refresh,
 })

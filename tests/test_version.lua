@@ -93,4 +93,49 @@ T.run("entering the world registers the prefix and says hello", function()
   T.eq(Stub.sent[1].message, "V:0.19.1")
 end)
 
+T.run("a build out of the working repository keeps its mouth shut", function()
+  fresh()
+  ns.AddonVersion = function() return "1.0.1-dev" end
+  Stub.guild = true
+  T.eq(ns.IsReleaseVersion("1.0.1"), true)
+  T.eq(ns.IsReleaseVersion("1.0.1-dev"), false)
+  T.eq(ns.IsReleaseVersion("v1.0.1"), false)
+
+  T.eq(ns.AnnounceVersion(true), false, "nothing is sent from an unreleased build")
+  T.eq(#Stub.sent, 0)
+
+  -- but it still hears a real release going past it
+  T.eq(ns.NoteVersion("1.0.2"), "1.0.2")
+  T.eq(ns.NewerVersion(), "1.0.2")
+  -- and somebody else's dev build is not believed either
+  T.eq(ns.NoteVersion("9.9.9-dev"), nil)
+  T.eq(ns.NewerVersion(), "1.0.2")
+
+  ns.AddonVersion = function() return "1.0.1" end
+  T.eq(ns.AnnounceVersion(true), true, "a release speaks as before")
+  T.eq(#Stub.sent, 1)
+  ns.AddonVersion = function() return "0.19.1" end
+end)
+
+T.run("a dev build does not even open the channel, so nothing can reach it", function()
+  fresh()
+  ns.AddonVersion = function() return "1.0.1-dev" end
+  Stub.guild = true
+  Stub.FireEvent("PLAYER_ENTERING_WORLD")
+  Stub.RunTimers()
+  T.eq(Stub.registeredPrefix, nil, "the prefix is never registered, so the client delivers nothing")
+  T.eq(#Stub.sent, 0)
+  T.eq(ns.ReadVersionMessage("ForeverBuddy", "V:9.9.9", nil, "Someone"), nil, "and a message is ignored")
+  T.eq(ns.NewerVersion(), nil)
+
+  fresh()
+  ns.AddonVersion = function() return "1.0.1" end
+  Stub.guild = true
+  Stub.FireEvent("PLAYER_ENTERING_WORLD")
+  Stub.RunTimers()
+  T.eq(Stub.registeredPrefix, "ForeverBuddy", "a release opens it as before")
+  T.eq(#Stub.sent, 1)
+  ns.AddonVersion = function() return "0.19.1" end
+end)
+
 T.finish()

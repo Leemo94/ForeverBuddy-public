@@ -121,9 +121,26 @@ class ZoneTests(unittest.TestCase):
         self.assertIsNone(bdg.level_range([]))
 
     def test_zone_faction(self):
-        self.assertEqual(bdg.zone_faction(30, 2, 40), "Alliance")
-        self.assertEqual(bdg.zone_faction(2, 30, 40), "Horde")
-        self.assertIsNone(bdg.zone_faction(15, 15, 40))
+        # side, leaning
+        self.assertEqual(bdg.zone_faction(30, 2, 40), ("Alliance", False))
+        self.assertEqual(bdg.zone_faction(2, 30, 40), ("Horde", False))
+        self.assertEqual(bdg.zone_faction(15, 15, 40), (None, False))
+
+    def test_zone_faction_leans(self):
+        # Stonetalon: 17 Alliance and 23 Horde of 46 quests is a lean, not a claim.
+        self.assertEqual(bdg.zone_faction(17, 23, 46), ("Horde", True))
+        # Ashenvale leans the other way.
+        self.assertEqual(bdg.zone_faction(47, 23, 70), ("Alliance", True))
+
+    def test_zone_faction_ignores_a_handful_in_a_neutral_zone(self):
+        # Tanaris: 6 and 9 among 91 quests says nothing about whose zone it is.
+        self.assertEqual(bdg.zone_faction(6, 9, 91), (None, False))
+        # But a side with no quests at all is still worth saying, however neutral the rest is.
+        self.assertEqual(bdg.zone_faction(0, 9, 29), ("Horde", False))
+
+    def test_zone_faction_needs_enough_to_judge(self):
+        self.assertEqual(bdg.zone_faction(1, 2, 19), (None, False))
+        self.assertEqual(bdg.zone_faction(0, 0, 8), (None, False))
 
     def test_parse_zone_names(self):
         text = '''l10n.zoneLookup = {
@@ -166,9 +183,16 @@ class LoadingScreens(unittest.TestCase):
         keys = [d[0] for d in bdg.DUNGEONS]
         missing = [k for k in keys if k not in bdg.LOADING_SCREENS]
         self.assertEqual(missing, [], "these dungeons would show a blank cover")
-        ids = list(bdg.LOADING_SCREENS.values())
-        self.assertEqual(len(set(ids)), len(ids), "two dungeons sharing one picture is a typo")
+        # A dungeon Blizzard has tuned has artwork of its own. The instances it has built but
+        # not released share a placeholder in the client's own tables, so they are allowed to
+        # repeat: that is what Map.db2 says, not a typo of ours.
+        tuned = {d[0] for d in bdg.DUNGEONS if d[3] is not None}
+        ids = [bdg.LOADING_SCREENS[k] for k in tuned if bdg.LOADING_SCREENS.get(k)]
+        self.assertEqual(len(set(ids)), len(ids), "two released dungeons sharing one picture is a typo")
         for key, file_id in bdg.LOADING_SCREENS.items():
+            if file_id is None:
+                self.assertNotIn(key, tuned, "a released dungeon needs a cover")
+                continue
             self.assertIsInstance(file_id, int, key)
             self.assertGreater(file_id, 0, key)
 

@@ -24,58 +24,103 @@ local function world(level, class)
   }
 end
 
-T.run("the plan splits what you can learn now from what is still to come", function()
+T.run("the ladder is every ability the class learns, in level order", function()
   world(17, "PALADIN")
-  local ready, later = ns.AbilityPlan("PALADIN", 17)
-  T.eq(#ready, 3, "two at level 1 and the rank at 14")
-  T.eq(ready[1].name, "Holy Light"); T.eq(ready[1].level, 1)
-  T.eq(#later, 4)
-  T.eq(later[1].level, 18, "the next rung up")
-  T.eq(later[#later].name, "Hammer of Justice"); T.eq(later[#later].level, 24)
+  local spells = ns.AbilityLadder("PALADIN")
+  T.eq(#spells, 7, "all of them, not just the ones this character can reach")
+  T.eq(spells[1].name, "Holy Light"); T.eq(spells[1].level, 1); T.eq(spells[1].rank, 1)
+  T.eq(spells[3].name, "Holy Light"); T.eq(spells[3].level, 14, "the rank at 14 comes after level 1")
+  T.eq(spells[#spells].name, "Hammer of Justice"); T.eq(spells[#spells].level, 24)
 end)
 
-T.run("anything already known drops off the ready list", function()
+T.run("what you already know changes nothing: the ladder is the whole ladder", function()
   world(17, "PALADIN")
-  _G.IsSpellKnown = function(id) return id == 635 or id == 21084 end
-  local ready = ns.AbilityPlan("PALADIN", 17)
-  T.eq(#ready, 1, "only the rank you have not trained yet")
-  T.eq(ready[1].rank, 2)
+  _G.IsSpellKnown = function() return true end
+  T.eq(#ns.AbilityLadder("PALADIN"), 7)
   _G.IsSpellKnown = nil
 end)
 
-T.run("the screen opens on your own class, in level order", function()
+T.run("the screen shows level 1 to 60 whatever level you are", function()
   world(17, "PALADIN")
   local w = ns.ShowWindow("abilities")
   T.eq(w.current, "abilities")
   local page = w.pages.abilities
   T.eq(page.classToken, "PALADIN")
   T.eq(page.heading:GetText(), "Paladin abilities")
-  T.truthy(page.subheading:GetText():find("next at level 18", 1, true), page.subheading:GetText())
-  T.eq(page.readyCount, 3)
-  T.eq(page.rows[1].text:GetText(), "Ready to learn at level 17")
+  T.eq(page.total, 7)
+  T.truthy(page.subheading:GetText():find("7 abilities, level 1 to 60", 1, true), page.subheading:GetText())
+  T.eq(page.rows[1].text:GetText(), "Level 1", "it opens on the first level, not on your own")
   T.eq(page.rows[2].text:GetText(), "Holy Light (rank 1)")
-  T.eq(page.rows[2].note:GetText(), "level 1")
+  T.eq(page.rows[2].note:GetText(), "", "the level is the heading above; the note is for a price")
+  local shown = page.shownRows
+
+  -- A level-up used to leave the top list stale. Now there is nothing to go stale.
+  Stub.level = 60
+  local again = ns.SelectScreen("abilities")
+  T.eq(again.total, 7)
+  T.eq(again.shownRows, shown)
+  T.eq(again.rows[1].text:GetText(), "Level 1")
   ns.HideWindow()
 end)
 
-T.run("a level with nothing new says so", function()
+T.run("a class with no abilities loaded says so rather than showing an empty page", function()
   world(17, "PALADIN")
-  _G.IsSpellKnown = function() return true end
+  ns.Abilities = {}
   local page = ns.SelectScreen("abilities")
-  T.eq(page.readyCount, 0)
-  T.eq(page.rows[2].text:GetText(), "Nothing new for you at this level.")
-  _G.IsSpellKnown = nil
+  T.eq(page.total, 0)
+  T.eq(page.rows[1].text:GetText(), "No abilities are known for this class yet.")
   ns.HideWindow()
 end)
 
-T.run("/fb abilities takes a class, and says so when it is not one", function()
+T.run("/fb abilities takes a class, or anything else as something to look for", function()
   world(17, "PALADIN")
   T.eq(ns.SlashHandlers.abilities("mage"), "MAGE")
   T.eq(_G.ForeverBuddyFrame.pages.abilities.classToken, "MAGE")
-  T.eq(ns.SlashHandlers.abilities("wizard"), nil)
-  T.truthy(printed[#printed]:find("no class called wizard", 1, true), printed[#printed])
   T.eq(ns.SlashHandlers.abilities(""), nil, "no class named means your own")
-  T.eq(_G.ForeverBuddyFrame.pages.abilities.classToken, "PALADIN")
+  local page = _G.ForeverBuddyFrame.pages.abilities
+  T.eq(page.classToken, "PALADIN")
+
+  T.eq(ns.SlashHandlers.abilities("hammer"), "hammer", "not a class, so it is a search")
+  T.eq(page.searching, "hammer")
+  T.eq(page.matched, 1)
+  T.eq(page.rows[2].text:GetText(), "Hammer of Justice")
+
+  ns.SlashHandlers.abilities("paladin")
+  T.eq(page.searching, false, "naming a class clears the box")
+  ns.HideWindow()
+end)
+
+T.run("the search box filters the ladder, headings and all", function()
+  world(17, "PALADIN")
+  local page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 7, "everything, to start with")
+
+  page.search:SetText("holy light")
+  page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 2, "both ranks")
+  T.eq(page.rows[1].text:GetText(), "Level 1", "with the level it is learned at above it")
+  T.eq(page.rows[2].text:GetText(), "Holy Light (rank 1)")
+  T.eq(page.rows[3].text:GetText(), "Level 14")
+  T.eq(page.rows[4].text:GetText(), "Holy Light (rank 2)")
+  T.truthy(page.subheading:GetText():find('2 matching "holy light"', 1, true), page.subheading:GetText())
+
+  page.search:SetText("HAMMER")
+  page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 1, "case is nobody's problem but ours")
+
+  page.search:SetText("holy light 2")
+  page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 1, "a rank can be searched for too")
+
+  page.search:SetText("sandwich")
+  page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 0)
+  T.truthy(page.rows[1].text:GetText():find('Nothing matching "sandwich"', 1, true), page.rows[1].text:GetText())
+
+  page.search:SetText("")
+  page = ns.SelectScreen("abilities")
+  T.eq(page.matched, 7, "clearing it gives the ladder back")
+  T.eq(page.searching, false)
   ns.HideWindow()
 end)
 
@@ -119,9 +164,9 @@ T.run("a race-locked spell only shows for the race that can train it", function(
   T.eq(ns.RaceAllows("Human,Dwarf", "Human"), true)
   T.eq(ns.RaceAllows("NightElf", nil), true, "browsing another class shows the lot")
 
-  local ready = ns.AbilityPlan("PRIEST", 20, "Scourge")
+  local mine = ns.AbilityLadder("PRIEST", "Scourge")
   local names = {}
-  for _, spell in ipairs(ready) do names[spell.name] = true end
+  for _, spell in ipairs(mine) do names[spell.name] = true end
   T.eq(names["Touch of Weakness"], true, "an Undead priest trains this")
   T.eq(names["Starshards"], nil, "and is never offered this")
   T.eq(names["Desperate Prayer"], nil)
@@ -135,6 +180,32 @@ T.run("a race-locked spell only shows for the race that can train it", function(
   T.truthy(shown[2652], "the screen shows the Undead one")
   T.eq(shown[10797], nil, "and not the Night Elf one")
   T.truthy(shown[2652]:find("Scourge", 1, true), "it says whose it is: " .. tostring(shown[2652]))
+  ns.HideWindow()
+end)
+
+T.run("a talent says so, because you cannot walk in and buy one", function()
+  world(17, "HUNTER")
+  ns.Abilities = {
+    HUNTER = {
+      { 19434, "Aimed Shot", 20, 0, "icon", true, false, false },
+      { 1299346, "Trueshot Aura", 25, 0, "icon", false, false, true },
+      { 19506, "Trueshot Aura", 40, 0, "icon", true, false, true },
+    },
+  }
+  local ladder = ns.AbilityLadder("HUNTER")
+  T.eq(ladder[1].talent, false, "Aimed Shot is sold by the trainer in Forever")
+  T.eq(ladder[2].talent, true, "Trueshot Aura is a Marksmanship talent")
+
+  local page = ns.SelectScreen("abilities")
+  local byLevel = {}
+  for i = 1, page.shownRows do
+    local text = page.rows[i].text:GetText()
+    if page.rows[i].spellID then byLevel[#byLevel + 1] = text end
+  end
+  T.eq(byLevel[1], "Aimed Shot", "nothing is added to something you buy")
+  T.truthy(byLevel[2]:find("(talent)", 1, true), byLevel[2])
+  T.truthy(byLevel[3]:find("(talent)", 1, true), "later ranks of a talent are still a talent: " .. byLevel[3])
+  T.truthy(page.subheading:GetText():find("2 of them are talents", 1, true), page.subheading:GetText())
   ns.HideWindow()
 end)
 

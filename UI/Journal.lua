@@ -4,6 +4,18 @@ local ADDON, ns = ...
 -- into it, drawn as a tree the way the quest log never does. Data from Data/Dungeons.lua; the
 -- status of every quest is live from your own quest log.
 
+
+-- SHELVED while "Where to level" grows to carry dungeons itself. The journal promises every
+-- quest for a dungeon and can only keep that promise for the ones Questie wrote down: of
+-- Forever's own dungeons, one has seven quests and the other eight have none at all. A screen
+-- that is mostly empty cards teaches people not to open it.
+--
+-- Nothing is deleted. The code and its tests are untouched, the data it reads is still built
+-- and still feeds the levelling screen, and ns.RegisterJournalScreen() turns it back on in one
+-- line once the quest scanner has filled the gaps in.
+local SHIPPING = false
+ns.JournalShipping = SHIPPING -- Dungeons/Guide.lua shelves /fb dungeon alongside it
+
 local CARD_W, CARD_H, CARD_GAP, CARD_COLUMNS = 396, 92, 10, 2
 local NODE_W, NODE_H, NODE_GAP_X, NODE_GAP_Y = 248, 54, 18, 16
 local TREE_COLUMNS = 3
@@ -34,12 +46,17 @@ local STATUS_MARK = {
 -- the Deadmines is an Alliance quest, so a Horde player should see whose it is rather than a
 -- bare zero. Only when the quests say nothing does the city holding the entrance stand in.
 function ns.DungeonFaction(dungeon)
-  local only
+  local only, count = nil, 0
   for _, q in ipairs(dungeon.quests) do
     if not q.faction then return dungeon.faction or nil end -- a quest for both sides settles it
     if only and q.faction ~= only then return dungeon.faction or nil end
     only = q.faction
+    count = count + 1
   end
+  -- One quest is not evidence that a dungeon belongs to a side; it is usually evidence that we
+  -- have only written one up. The Excavation Site sits in Wetlands with a single Horde quest
+  -- found so far, and flying a Horde emblem over it would be a guess.
+  if count < 2 then return dungeon.faction or nil end
   return only or dungeon.faction or nil
 end
 
@@ -210,7 +227,7 @@ local function ShowBrowse(page)
     card.count:SetText(("%d quest%s"):format(mine, mine == 1 and "" or "s"))
     local c = mine == 0 and ns.COLORS.grey or (done == mine and ns.COLORS.done or ns.COLORS.available)
     card.count:SetTextColor(c[1], c[2], c[3])
-    card.level:SetText(("LV %d-%d"):format(dungeon.level[1], dungeon.level[2]))
+    card.level:SetText(ns.DungeonLevelText(dungeon))
     if dungeon.screen then
       card.art:SetTexture(dungeon.screen)
       card.art:Show()
@@ -226,7 +243,9 @@ local function ShowBrowse(page)
     else
       card.faction:Hide()
     end
-    local fits = (level >= dungeon.level[1] - 2)
+    -- Nothing to measure yourself against on an untuned dungeon, so it is never "yours yet".
+    local lo = ns.DungeonLevels(dungeon)
+    local fits = lo ~= nil and level >= lo - 2
     card.name:SetTextColor(fits and 1 or 0.6, fits and 0.82 or 0.6, fits and 0 or 0.6)
     card:Show()
     shown = shown + 1
@@ -326,7 +345,10 @@ end
 function ns.NodeTooltipLines(node)
   local q = node.quest
   local lines = { node.level and ("[%d] %s"):format(node.level, node.name) or node.name }
-  if q then table.insert(lines, ns.QuestShareText(q)) end
+  if q then
+    local share = ns.QuestShareText(q)
+    if share then table.insert(lines, share) end -- nil when nobody knows yet
+  end
   local place = node.place
   if place then
     local where = ns.PlaceText and ns.PlaceText(place) or place.name
@@ -377,8 +399,8 @@ local function ShowDetail(page, dungeon)
   page.heading:SetText(dungeon.name)
   local onlyMine = page.onlyMine:GetChecked() and true or false
   local mine, done = ns.DungeonQuestCount(dungeon, onlyMine)
-  page.subheading:SetText(("Level %d-%d. %d quest%s %s, %d done. Click a step for an arrow to it.")
-    :format(dungeon.level[1], dungeon.level[2], mine, mine == 1 and "" or "s",
+  page.subheading:SetText(("%s. %d quest%s %s, %d done. Click a step for an arrow to it.")
+    :format(ns.DungeonLevelText(dungeon, "long"), mine, mine == 1 and "" or "s",
             onlyMine and "for you" or "in all", done))
 
   local columns = ns.DungeonChains(dungeon, onlyMine)
@@ -523,13 +545,17 @@ end
 
 ns.JournalShowBrowse, ns.JournalShowDetail = ShowBrowse, ShowDetail
 
-ns.RegisterScreen({
-  key = "journal",
-  name = "Dungeon journal",
-  icon = "Interface\\LFGFrame\\LFGIcon-Dungeon",
-  build = Build,
-  refresh = Refresh,
-})
+function ns.RegisterJournalScreen()
+  return ns.RegisterScreen({
+    key = "journal",
+    name = "Dungeon journal",
+    icon = "Interface\\LFGFrame\\LFGIcon-Dungeon",
+    build = Build,
+    refresh = Refresh,
+  })
+end
+
+if SHIPPING then ns.RegisterJournalScreen() end
 
 -- Is the journal the screen on show, and which dungeon is open in it?
 function ns.IsJournalShown()

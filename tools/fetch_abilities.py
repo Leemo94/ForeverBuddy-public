@@ -33,23 +33,55 @@ RANK = re.compile(r'whtt-rank">Rank (\d+)')
 REQUIRES = re.compile(r"Requires ([A-Z][a-zA-Z ]+?)</div>")
 
 
+# Lines in the class category that are mostly not a class's own abilities: every mount in the
+# game sits on "Mounts", every pet trick on "Pet - Beast". On these lines only a row that names
+# its class is believed, which keeps a paladin's Summon Warhorse and leaves out the other two
+# hundred mounts and the hunter's pet growling.
+CLASS_MUST_BE_NAMED = ("Pet - ", "Mounts", "Companions", "Internal", "Racial")
+
+
 def class_spells(cache):
-    """{spell id: [class names]} for every spell on a class skill line."""
+    """{spell id: [class names]} for every spell on a class skill line.
+
+    Most rows name their class in ClassMask, but 2,260 of them leave it at zero and let the
+    skill line speak for itself: every rank of Shadow Word: Death that a priest actually trains
+    sits on Shadow Magic with no mask at all, and only the engraved rune carries one. Reading
+    the mask alone threw all of those away. So a line's class is the union of whatever its own
+    masked rows say, and rows with no mask inherit it.
+    """
     with open(os.path.join(cache, "SkillLine.csv"), encoding="utf-8") as f:
         lines = {int(r["ID"]): r for r in csv.DictReader(f)}
-    out = collections.defaultdict(list)
     with open(os.path.join(cache, "SkillLineAbility.csv"), encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            line = lines.get(int(row["SkillLine"] or 0))
-            if not line or line.get("CategoryID") != CLASS_SKILL_CATEGORY:
-                continue
-            mask = int(row["ClassMask"] or 0)
-            spell = int(row["Spell"] or 0)
-            if not spell:
-                continue
-            for bit, name in CLASS_MASK.items():
-                if mask & bit and name not in out[spell]:
-                    out[spell].append(name)
+        rows = list(csv.DictReader(f))
+
+    def classes_of(mask):
+        return [name for bit, name in CLASS_MASK.items() if mask & bit]
+
+    line_classes = collections.defaultdict(set)
+    for row in rows:
+        line = lines.get(int(row["SkillLine"] or 0))
+        if not line or line.get("CategoryID") != CLASS_SKILL_CATEGORY:
+            continue
+        for name in classes_of(int(row["ClassMask"] or 0)):
+            line_classes[row["SkillLine"]].add(name)
+
+    out = collections.defaultdict(list)
+    for row in rows:
+        line = lines.get(int(row["SkillLine"] or 0))
+        if not line or line.get("CategoryID") != CLASS_SKILL_CATEGORY:
+            continue
+        spell = int(row["Spell"] or 0)
+        if not spell:
+            continue
+        name = line.get("DisplayName_lang") or ""
+        named = classes_of(int(row["ClassMask"] or 0))
+        if any(name.startswith(prefix) for prefix in CLASS_MUST_BE_NAMED):
+            found = named
+        else:
+            found = named or sorted(line_classes.get(row["SkillLine"], ()))
+        for klass in found:
+            if klass not in out[spell]:
+                out[spell].append(klass)
     return out
 
 
