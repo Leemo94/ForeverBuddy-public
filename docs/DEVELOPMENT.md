@@ -105,7 +105,7 @@ back on the first commit after the tag. The game versions the file is tagged wit
 ## Tests
 
     sh tests/run.sh                              # Lua units under luajit, run twice: Classic and Mainline fake clients
-    python3 -m unittest discover -s tools -v     # data build
+    python3 -m unittest discover -s tools -p 'test_*.py' -v   # data build
 
 ## Classic Era test (before the beta)
 

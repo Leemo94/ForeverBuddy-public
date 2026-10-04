@@ -31,7 +31,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq luajit
           sh tests/run.sh
-          python3 -m unittest discover -s tools
+          python3 -m unittest discover -s tools -p 'test_*.py'
 
       - name: Package and release
         uses: BigWigsMods/packager@v2
